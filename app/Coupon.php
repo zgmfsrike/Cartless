@@ -10,6 +10,7 @@ class Coupon extends Model
   protected $keyType = 'string';
   protected $table = 'coupons';
   protected $primaryKey = 'coupon_code';
+  public $timestamps = false;
 
 
   public function order()

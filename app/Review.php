@@ -8,6 +8,7 @@ class Review extends Model
 {
   protected $table = 'reviews';
   protected $primaryKey = 'review_id';
+  public $timestamps = false;
 
   public function product()
   {
