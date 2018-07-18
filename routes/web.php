@@ -28,3 +28,7 @@ Route::get('/product-list-member', function () {
 Route::get('/product-add', function () {
     return view('product.product-add');
 });
+
+Route::get('/product-details', function () {
+    return view('product.product-details');
+});
