@@ -10,7 +10,7 @@ class ProductController extends Controller
   //get list product for staff
   public function getListProductStaff()
   {
-    $list_product = Product::paginate(25);
+    $list_product = Product::paginate(5);
     return view('product.product-list-staff',['list_product'=>$list_product]);
 
   }
@@ -33,8 +33,8 @@ class ProductController extends Controller
 
   public function getEditProduct($id)
   {
-    $product = Product::find($id);
-    return view('',['product'=>$product]);
+    $product = Product::where('product_id',$id)->get();
+    return view('product.product-edit',['product'=>$product,'id'=>$id]);
   }
 
 
@@ -84,7 +84,7 @@ class ProductController extends Controller
     $product->product_image = $request->product_image;
     $product->save();
 
-    return view();
+    return redirect()->route('product-list-staff');
 
     //delete product from database
 

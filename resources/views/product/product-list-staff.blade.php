@@ -29,7 +29,7 @@
                   <td>{{$list->product_description}}</td>
                   <td>{{$list->product_price}}</td>
                   <td>
-                    <button class="uk-button uk-button-primary uk-button-small">Edit</button>
+                    <a href="{{route('product-edit',['id'=>$list->product_id])}}"><button class="uk-button uk-button-primary uk-button-small">Edit</button></a>
                     <button class="uk-button uk-button-link ">Delete</button>
                   </td>
                 </tr>

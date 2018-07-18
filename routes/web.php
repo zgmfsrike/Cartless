@@ -23,9 +23,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('product-list-staff','ProductController@getListProductStaff')->name('product-list-staff')->middleware('check_staff');
 Route::post('product-add-staff','ProductController@postStoreProduct')->name('product-add-staff')->middleware('check_staff');
 Route::get('product-list-customer','ProductController@getListProductCustomer')->name('product-list-customer');
-// Route::get('/product-list-customer', function () {
-//     return view('product.product-list-customer');
-// });
+Route::get('product/product-edit/{id}','ProductController@getEditProduct')->name('product-edit')->middleware('check_staff');
+Route::post('product/product-update/{id}','ProductController@postUpdateProduct')->name('product-update')->middleware('check_staff');
+
 Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
 Route::get('/product-add', function () {
     return view('product.product-add');
