@@ -26,3 +26,7 @@ Route::get('/product-list-staff', function () {
 Route::get('/product-list-member', function () {
     return view('product.product-list-member');
 });
+
+Route::get('/product-add', function () {
+    return view('product.product-add');
+});
