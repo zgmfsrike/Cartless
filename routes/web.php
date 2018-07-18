@@ -30,3 +30,7 @@ Route::get('product-list-customer','ProductController@getListProductCustomer')->
 Route::get('/product-add', function () {
     return view('product.product-add');
 });
+
+Route::get('/product-details', function () {
+    return view('product.product-details');
+});
