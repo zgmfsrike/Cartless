@@ -53,12 +53,14 @@ class ProductController extends Controller
     $product->product_name =$request->product_name;
     $product->product_price =$request->price;
     $product->product_description =$request->description;
-    $file = $request->file('product_image');
-    $extension = $request->file('product_image')->extension();
-    $path = 'image/product';
-    $image_name = $request->product_name."_".$time.$extension;
-    $file->move($path,$image_name);
-    $product->product_image = $image_name;
+    if($request->hasFile('product_image')){
+      $file = $request->file('product_image');
+      $extension = $request->file('product_image')->extension();
+      $path = 'image/product';
+      $image_name = $request->product_name."_".$time.$extension;
+      $file->move($path,$image_name);
+      $product->product_image = $image_name;
+    }
 
 
     $product->save();
@@ -68,20 +70,30 @@ class ProductController extends Controller
 
   //update product information
 
-  public function postUpdateProduct($id)
+  public function postUpdateProduct(Request $request ,$id)
   {
+    $time = time();
 
     $this->validate($request,  [
       'product_name'=>'string|min:4|max:30|required',
-      'product_price'=>'numeric|min:1|required',
-      'product_description'=>'string|min:4|max:500|required',
-      'product_image'=>'string|nullable',
+      'price'=>'numeric|min:1|required',
+      'description'=>'string|min:4|max:500|required',
+      'product_image'=>'image|nullable',
     ]);
     $product = Product::find($id);
     $product->product_name =$request->product_name;
-    $product->product_price =$request->product_price;
-    $product->product_description =$request->product_description;
-    $product->product_image = $request->product_image;
+    $product->product_price =$request->price;
+    $product->product_description =$request->description;
+    if($request->hasFile('product_image')){
+      $file = $request->file('product_image');
+      $extension = $request->file('product_image')->extension();
+      $path = 'image/product';
+      $image_name = $request->product_name."_".$time.$extension;
+      $file->move($path,$image_name);
+      $product->product_image = $image_name;
+
+    }
+
     $product->save();
 
     return redirect()->route('product-list-staff');

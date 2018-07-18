@@ -48,7 +48,7 @@ class LoginController extends Controller
     if (Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->remember) && Auth::user()->is_staff == 1) {
       return redirect()->intended(route('product-list-staff'));
     }else if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->remember) && Auth::user()->is_staff == 0){
-      return redirect()->route('home');
+      return redirect()->route('product-list-customer');
     }else{
       // return redirect()->back()->withInput($request->only('username','remember'))->with('login_fail','Username or Password is invalid');
       return redirect()->back()->withInput($request->only('username','remember'));
