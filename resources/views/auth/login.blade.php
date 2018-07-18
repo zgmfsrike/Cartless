@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="uk-section">
-  <div class="uk-container">
+  <div class="uk-container uk-container-small">
     <div class="col-md-8">
       <div class="uk-card uk-card-default uk-card-body">
         <div class="uk-card-title">{{ __('Login') }}</div>

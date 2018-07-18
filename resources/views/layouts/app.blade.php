@@ -46,7 +46,7 @@
         </div>
       </nav>
 
-      <main class="uk-container uk-container-small">
+      <main class="uk-container">
         @yield('content')
       </main>
     </div>
