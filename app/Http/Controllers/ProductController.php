@@ -7,11 +7,18 @@ use App\Product;
 class ProductController extends Controller
 {
 
-  //get list product
-  public function getListProduct()
+  //get list product for staff
+  public function getListProductStaff()
   {
-    $list_product = Product::all();
+    $list_product = Product::paginate(25);
     return view('product.product-list-staff',['list_product'=>$list_product]);
+
+  }
+
+  public function getListProductCustomer()
+  {
+    $list_product = Product::paginate(9);
+    return view('',['list_product'=>$list_product]);
 
   }
   //get product detail
@@ -38,14 +45,22 @@ class ProductController extends Controller
       'product_name'=>'string|min:4|max:30|required',
       'product_price'=>'numeric|min:1|required',
       'product_description'=>'string|min:4|max:500|required',
-      'product_image'=>'string|nullable',
+      'product_image'=>'image|nullable',
     ]);
 
     $product = new Product;
     $product->product_name =$request->product_name;
     $product->product_price =$request->product_price;
     $product->product_description =$request->product_description;
-    $product->product_image = $request->product_image;
+    if(isset($request->input('product_image'))){
+      $file = $request->file('product_image');
+      $path = 'image/product';
+      $file_name = $file->getClientOriginalName();
+      $file->move($path,$file->getClientOriginalName());
+      $product->product_image = $file_name;
+
+    }
+
     $product->save();
 
     return view();
@@ -71,7 +86,7 @@ class ProductController extends Controller
 
     return view();
 
-  //delete product from database
+    //delete product from database
 
   }
   public function postDeleteProduct($id)
