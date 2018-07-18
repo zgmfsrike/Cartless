@@ -32,3 +32,7 @@ Route::get('/product-add', function () {
 Route::get('/product-details', function () {
     return view('product.product-details');
 });
+
+Route::get('/shopping-cart', function () {
+    return view('shopping-cart.cart');
+});
