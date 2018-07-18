@@ -16,7 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->string('order_id',13);
             $table->integer('user_id')->unsigned();
-            $table->integer('net_price');
+            $table->double('net_price');
             $table->integer('order_status');
             $table->string('coupon_code',20);
         });

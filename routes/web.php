@@ -19,6 +19,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/product-list-staff', function () {
-    return view('product.product-list-staff');
-});
+// Route::get('/product-list-staff', function () {
+//     return view('product.product-list-staff');
+// });
+
+Route::get('product-list-staff','ProductController@getListProduct')->name('product-list-staff');

@@ -24,7 +24,7 @@
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
           <li class="uk-active"><a href="#">{{ __('CARTless') }}</a></li>
-          <li><a href="#">Product List</a></li>
+          <li><a href="{{route('product-list-staff')}}">Product List</a></li>
           <li><a href="#">{{ __('Product List') }}</a></li>
         </ul>
       </div>
