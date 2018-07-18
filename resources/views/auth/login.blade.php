@@ -12,10 +12,10 @@
             @csrf
 
             <div class="uk-margin">
-              <label class="uk-form-label" for="form-horizontal-text">{{ __('E-Mail Address') }}</label>
+              <label class="uk-form-label" for="form-horizontal-text">{{ __('E-Mail') }}</label>
               <div class="uk-form-controls">
-                <div class="uk-inline">
-                  <span class="uk-form-icon" uk-icon="icon: user"></span>
+                <div class="uk-inline uk-width-2-3@s">
+                  <span class="uk-form-icon" uk-icon="icon: mail"></span>
                   <input id="email" type="email" class="uk-input uk-width-1-1 {{ $errors->has('email') ? ' uk-form-danger' : '' }}"  name="email" value="{{ old('email') }}" required autofocus>
                 </div>
               </div>
@@ -29,7 +29,7 @@
             <div class="uk-margin">
               <label class="uk-form-label" for="form-horizontal-text">{{ __('Password') }}</label>
               <div class="uk-form-controls">
-                <div class="uk-inline">
+                <div class="uk-inline uk-width-2-3@s">
                   <span class="uk-form-icon" uk-icon="icon: lock"></span>
                   <input id="password" type="password" class="uk-input uk-width-1-1 {{ $errors->has('password') ? ' uk-form-danger' : '' }}"   name="password" required>
                 </div>
@@ -54,6 +54,5 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 @endsection

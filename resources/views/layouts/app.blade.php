@@ -22,28 +22,33 @@
   <div id="app">
     <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
       <div class="uk-navbar-left">
-
         <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="#">Active</a></li>
-          <li>
-            <a href="#">Parent</a>
-            <div class="uk-navbar-dropdown">
-              <ul class="uk-nav uk-navbar-dropdown-nav">
-                <li class="uk-active"><a href="#">Active</a></li>
-                <li><a href="#">Item</a></li>
-                <li><a href="#">Item</a></li>
-              </ul>
-            </div>
-          </li>
-          <li><a href="#">Item</a></li>
+          <li class="uk-active"><a href="#">{{ __('CARTless') }}</a></li>
+          <li><a href="#">Product List</a></li>
+          <li><a href="#">{{ __('Product List') }}</a></li>
         </ul>
-
       </div>
-    </nav>
 
-    <main class="uk-container uk-container-small">
-      @yield('content')
-    </main>
-  </div>
-</body>
-</html>
+      <div class="uk-navbar-right">
+        <ul class="uk-navbar-nav">
+          @guest
+          <li><a href="/login">{{ __('Login') }}</a></li>
+          <li><a href="/register">{{ __('Register') }}</a></li>
+          @else
+          <li><a onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
+            @endguest
+          </ul>
+        </div>
+      </nav>
+
+      <main class="uk-container uk-container-small">
+        @yield('content')
+      </main>
+    </div>
+  </body>
+  </html>
