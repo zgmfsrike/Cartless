@@ -18,12 +18,12 @@
                 <div class="uk-inline uk-width-2-3@s">
                   <span class="uk-form-icon" uk-icon="icon: mail"></span>
                   <input id="email" type="email" class="uk-input uk-width-1-1 {{ $errors->has('email') ? ' uk-form-danger' : '' }}"  name="email" value="{{ old('email') }}" required autofocus>
-                  @if ($errors->has('email'))
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('email') }}</strong>
-                  </span>
-                  @endif
                 </div>
+                @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -33,12 +33,12 @@
                 <div class="uk-inline uk-width-2-3@s">
                   <span class="uk-form-icon" uk-icon="icon: lock"></span>
                   <input id="password" type="password" class="uk-input uk-width-1-1 {{ $errors->has('password') ? ' uk-form-danger' : '' }}"   name="password" required>
-                  @if ($errors->has('password'))
-                  <span class="invalid-feedback" role="alert">
-                    <strong>{{ $errors->first('password') }}</strong>
-                  </span>
-                  @endif
                 </div>
+                @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('password') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -57,6 +57,11 @@
                 <div class="uk-width-2-3@s">
                   <input id="firstname" type="text" class="uk-input {{ $errors->has('firstname') ? ' uk-form-danger' : '' }}"   name="firstname" required>
                 </div>
+                @if ($errors->has('firstname'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('firstname') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 
@@ -66,6 +71,11 @@
                 <div class="uk-width-2-3@s">
                   <input id="lastname" type="text" class="uk-input {{ $errors->has('lastname') ? ' uk-form-danger' : '' }}"   name="lastname" required>
                 </div>
+                @if ($errors->has('lastname'))
+                <span class="invalid-feedback" role="alert">
+                  <strong>{{ $errors->first('lastname') }}</strong>
+                </span>
+                @endif
               </div>
             </div>
 

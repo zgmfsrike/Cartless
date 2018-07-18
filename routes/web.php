@@ -24,3 +24,7 @@ Route::get('product-list-staff','ProductController@getListProductStaff')->name('
 Route::get('/product-list-member', function () {
     return view('product.product-list-member');
 });
+
+Route::get('/product-add', function () {
+    return view('product.product-add');
+});
