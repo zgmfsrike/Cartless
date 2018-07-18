@@ -26,7 +26,7 @@ Route::get('product-list-customer','ProductController@getListProductCustomer')->
 // Route::get('/product-list-customer', function () {
 //     return view('product.product-list-customer');
 // });
-
+Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
 Route::get('/product-add', function () {
     return view('product.product-add');
 });
