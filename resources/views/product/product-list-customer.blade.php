@@ -11,8 +11,23 @@
 
       <div class="uk-card-body">
         <div class="uk-grid-medium uk-child-width-1-3@s uk-text-center" uk-grid="masonry: true" uk-height-match="target: > div > .uk-card">
+          @foreach ($list_product as $list)
+            <div>
+              <div class="uk-card uk-card-default uk-card-hover">
+                <div class="uk-card-media-top">
+                  <img src="/image/product/{{$list->product_image}}" alt="">
+                </div>
+                <div class="uk-card-body">
+                  <h3 class="uk-card-title">{{$list->product_name}}</h3>
+                  <p>{{$list->product_price}}$</p>
+                  <p>{{$list->product_description}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          @endforeach
 
-          <div>
+          {{-- <div>
             <div class="uk-card uk-card-default uk-card-hover">
               <div class="uk-card-media-top">
                 <img src="../docs/images/light.jpg" alt="">
@@ -26,22 +41,8 @@
                 </p>
               </div>
             </div>
-          </div>
-          <div>
-            <div class="uk-card uk-card-default uk-card-hover">
-              <div class="uk-card-media-top">
-                <img src="../docs/images/light.jpg" alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Product name</h3>
-                <p>Price : 300000 $</p>
-                <p>product description product description product description product description
-                  product description product description  product description
-                  product description product description product description product description
-                </p>
-              </div>
-            </div>
-          </div><div>
+          </div> --}}
+          {{-- <div>
             <div class="uk-card uk-card-default uk-card-hover">
               <div class="uk-card-media-top">
                 <img src="../docs/images/light.jpg" alt="">
@@ -54,7 +55,8 @@
                 </p>
               </div>
             </div>
-          </div><div>
+          </div> --}}
+          {{-- <div>
             <div class="uk-card uk-card-default uk-card-hover">
               <div class="uk-card-media-top">
                 <img src="../docs/images/light.jpg" alt="">
@@ -67,7 +69,8 @@
                 </p>
               </div>
             </div>
-          </div><div>
+          </div> --}}
+          {{-- <div>
             <div class="uk-card uk-card-default uk-card-hover">
               <div class="uk-card-media-top">
                 <img src="../docs/images/light.jpg" alt="">
@@ -80,7 +83,7 @@
                 </p>
               </div>
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </div>

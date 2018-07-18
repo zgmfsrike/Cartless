@@ -18,7 +18,7 @@ class ProductController extends Controller
   public function getListProductCustomer()
   {
     $list_product = Product::paginate(9);
-    return view('',['list_product'=>$list_product]);
+    return view('product.product-list-customer',['list_product'=>$list_product]);
 
   }
   //get product detail
@@ -43,27 +43,27 @@ class ProductController extends Controller
   {
     $this->validate($request,  [
       'product_name'=>'string|min:4|max:30|required',
-      'product_price'=>'numeric|min:1|required',
-      'product_description'=>'string|min:4|max:500|required',
+      'price'=>'numeric|min:1|required',
+      'description'=>'string|min:4|max:500|required',
       'product_image'=>'image|nullable',
     ]);
+    $time = time();
 
     $product = new Product;
     $product->product_name =$request->product_name;
-    $product->product_price =$request->product_price;
-    $product->product_description =$request->product_description;
-    if(isset($request->input('product_image'))){
-      $file = $request->file('product_image');
-      $path = 'image/product';
-      $file_name = $file->getClientOriginalName();
-      $file->move($path,$file->getClientOriginalName());
-      $product->product_image = $file_name;
+    $product->product_price =$request->price;
+    $product->product_description =$request->description;
+    $file = $request->file('product_image');
+    $extension = $request->file('product_image')->extension();
+    $path = 'image/product';
+    $image_name = $request->product_name."_".$time.$extension;
+    $file->move($path,$image_name);
+    $product->product_image = $image_name;
 
-    }
 
     $product->save();
 
-    return view();
+    return redirect()->route('product-list-staff');
   }
 
   //update product information

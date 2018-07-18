@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductDiscount extends Model
 {
   protected $table = 'product_discounts';
-
+  public $timestamps = false;
   protected $fillable = [
     'product_id','product_discount'
   ];

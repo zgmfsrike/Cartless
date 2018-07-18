@@ -7,7 +7,7 @@
       <div class="uk-card uk-card-default uk-card-body">
         <div class="uk-card-title uk-width-1-1">
           {{ __('Product List') }}
-          <button class="uk-button uk-button-primary uk-float-right">Add more product</button>
+          <a href="/product-add"><button class="uk-button uk-button-primary uk-float-right">Add more product</button></a>
         </div>
 
         <div class="uk-overflow-auto uk-width-1-1">

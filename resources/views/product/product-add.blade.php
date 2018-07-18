@@ -11,7 +11,7 @@
 
       <div class="uk-card-body">
 
-        <form method="POST" action="{{ route('login') }}" class="uk-form-horizontal uk-margin-large">
+        <form method="POST" action="{{ route('product-add-staff') }}" class="uk-form-horizontal uk-margin-large" enctype="multipart/form-data">
           @csrf
 
           <div class="uk-margin">
@@ -63,7 +63,7 @@
                 <div class="uk-width-2-3@s">
                   <div uk-form-custom>
                     <input class="uk-input uk-form-width-medium" type="text" placeholder="Image" value="" disabled>
-                    <input type="file">
+                    <input type="file" name="product_image" accept="image/*">
                     <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
                   </div>
                 </div>
