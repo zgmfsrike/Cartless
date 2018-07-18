@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/product-list-staff', function () {
     return view('product.product-list-staff');
 });
+
+Route::get('/product-list-member', function () {
+    return view('product.product-list-member');
+});
