@@ -30,7 +30,12 @@
                   <td>{{$list->product_price}}</td>
                   <td>
                     <a href="{{route('product-edit',['id'=>$list->product_id])}}"><button class="uk-button uk-button-primary uk-button-small">Edit</button></a>
-                    <button class="uk-button uk-button-link ">Delete</button>
+                    {{-- <a href="{{route('product-delete',['id'=>$list->product_id])}}"></a><button class="uk-button uk-button-link ">Delete</button> --}}
+                    <form action="{{route('product-delete',['id'=>$list->product_id])}}" method="post">
+                      @csrf
+                      <input type="hidden" name="_method" value="DELETE">
+                      <button type="submit" class="uk-button uk-button-link ">Delete</button>
+                    </form>
                   </td>
                 </tr>
 

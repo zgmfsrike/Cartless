@@ -106,7 +106,7 @@ class ProductController extends Controller
     $product = Product::find($id);
     $product->delete();
 
-    return view();
+      return redirect()->route('product-list-staff');
 
   }
 
