@@ -22,7 +22,21 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
+            @foreach ($list_product as $list)
+              <tr>
+                <td>{{$list->product_id}}</td>
+                <td>{{$list->product_name}}</td>
+                <td>{{$list->product_description}}</td>
+                <td>{{$list->product_price}}</td>
+                <td>
+                  <button class="uk-button uk-button-primary uk-button-small">Edit</button>
+                  <button class="uk-button uk-button-link ">Delete</button>
+                </td>
+              </tr>
+
+            @endforeach
+
+            {{-- <tr>
               <td>Table Data</td>
               <td>Table Data</td>
               <td>Table Data</td>
@@ -31,8 +45,8 @@
                 <button class="uk-button uk-button-primary uk-button-small">Edit</button>
                 <button class="uk-button uk-button-link ">Delete</button>
               </td>
-            </tr>
-            <tr>
+            </tr> --}}
+            {{-- <tr>
               <td>Table Data</td>
               <td>Table Data</td>
               <td>Table Data</td>
@@ -41,17 +55,7 @@
                 <button class="uk-button uk-button-primary uk-button-small">Edit</button>
                 <button class="uk-button uk-button-link ">Delete</button>
               </td>
-            </tr>
-            <tr>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>Table Data</td>
-              <td>
-                <button class="uk-button uk-button-primary uk-button-small">Edit</button>
-                <button class="uk-button uk-button-link ">Delete</button>
-              </td>
-            </tr>
+            </tr> --}}
           </tbody>
         </table>
       </div>
