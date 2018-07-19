@@ -23,34 +23,34 @@
           <tbody>
             <!-- foreach ($list_product as $list) -->
             @foreach ($cart as $i=>$product)
-              <tr>
-                <td>{{$product->product_image}}</td>
-                <td>{{$product->product_name}}</td>
+            <tr>
+              <td>{{$product->product_image}}</td>
+              <td>{{$product->product_name}}</td>
 
-                <td>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="uk-button uk-button-link">
-                      <span uk-icon="icon: plus-circle"></span>
-                    </button>
-                  </form>
-                    <input type="text" disabled style="width: 35px;" value="{{$product->amount}}">
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button class="uk-button uk-button-link">
-                      <span uk-icon="icon: minus-circle"></span>
-                    </button>
-                  </form>
-                </td>
-                <td>{{$product->product_price}}฿</td>
-                <td>
-                  <form action="{{route('cart-remove-item',['index'=>$i])}}" method="POST">
-                    @csrf
-                    <button type="submit" class="uk-button uk-button-danger">Remove</button>
-                  </form>
+              <td>
+                <a onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <span uk-icon="icon: plus-circle"></span></a>
+                <input type="text" style="width: 35px;" value="{{$product->amount}}" disabled>
+                <a onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <span uk-icon="icon: minus-circle"></span></a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                  @csrf
+                </form>
+              </td>
+              <td>{{$product->product_price}}฿</td>
+              <td>
+                <form action="{{route('cart-remove-item',['index'=>$i])}}" method="POST">
+                  @csrf
+                  <button type="submit" class="uk-button uk-button-danger">Remove</button>
+                </form>
 
-                </td>
-              </tr>
+              </td>
+            </tr>
 
             @endforeach
 
