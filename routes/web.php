@@ -65,3 +65,8 @@ Route::any('/cart/decrease/{index}', [
     'uses' => 'CartController@decreaseAmount',
     // 'middleware' => 'auth'
 ])->name('cart-decrease-item');
+
+Route::get('/cart/clear', function () {
+  Session::forget('cart');
+  return  redirect()->route('cart');
+});
