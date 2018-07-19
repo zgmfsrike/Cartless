@@ -35,6 +35,7 @@ class CartController extends Controller
       $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
     }
     return view('shopping-cart.cart-view',['cart'=>$cart]);
+
   }
 
   public function removeItem($index)

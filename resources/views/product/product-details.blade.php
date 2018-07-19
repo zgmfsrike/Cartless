@@ -28,7 +28,7 @@
               <div class="uk-margin">
                 <form method="POST" action="{{ route('add-to-cart') }}" class="uk-form-horizontal uk-margin-large">
                   @csrf
-                  <input type="text" name="product_id" placeholder="display: none" value="{{$product->product_id}}">
+                  <input type="text" name="product_id" placeholder="display: none" value="{{$product->product_id}}" style="display: none" >
 
                   <label class="uk-form-label" for="form-horizontal-text">{{ __('Amount') }}</label>
                   <div class="uk-form-controls">

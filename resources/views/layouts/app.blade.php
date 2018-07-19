@@ -25,9 +25,9 @@
         <ul class="uk-navbar-nav">
           <li class="uk-active"><a href="#">{{ __('CARTless') }}</a></li>
           @if(Auth::user() && Auth::user()->is_staff == 1)
-            <li><a href="{{route('product-list-staff')}}">Product List</a></li>
+          <li><a href="{{route('product-list-staff')}}">Product List</a></li>
           @else
-            <li><a href="{{route('product-list-customer')}}">Product List</a></li>
+          <li><a href="{{route('product-list-customer')}}">Product List</a></li>
           @endif
 
           <li><a href="#">{{ __('Product List') }}</a></li>
@@ -37,15 +37,16 @@
       <div class="uk-navbar-right">
         <ul class="uk-navbar-nav">
           @guest
-            <li><a href="/login">{{ __('Login') }}</a></li>
-            <li><a href="/register">{{ __('Register') }}</a></li>
+          <li><a href="/login">{{ __('Login') }}</a></li>
+          <li><a href="/register">{{ __('Register') }}</a></li>
           @else
-            <li><a onclick="event.preventDefault();
-              document.getElementById('logout-form').submit();">
-              {{ __('Logout') }}</a></li>
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-              </form>
+          <li><a href="/cart"><span uk-icon="icon: cart"></span></a></li>
+          <li><a onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}</a></li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
             @endguest
           </ul>
         </div>
