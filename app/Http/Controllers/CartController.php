@@ -19,7 +19,7 @@ class CartController extends Controller
         "amount"=>$amount
       ]
     ]);
-    return  "Add cart success";
+    return  redirect()->route('cart');
   }
 
   public function getItems()
@@ -29,9 +29,10 @@ class CartController extends Controller
     $cart=[];
     $session_cart = Session::get('cart');
     foreach ($session_cart as $index => $value) {
-        $id =$session_cart[$index][0]['id'];
-        $cart[$index] = Product::find($id);
-        $cart[$index]['amount'] = $session_cart[$index][0]['amount'];
+      $id =$session_cart[$index][0]['id'];
+      $cart[$index] = Product::find($id);
+      $cart[$index]['amount'] = $session_cart[$index][0]['amount'];
+      $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
     }
     return view('shopping-cart.cart-view',['cart'=>$cart]);
   }
@@ -41,7 +42,8 @@ class CartController extends Controller
     // $products = Session::get('products'); // Get the array
     // unset($product[$index]); // Unset the index you want
     // Session::set('products', $products); // Set the array again
-    return Session::forget('cart.' . $index);;
+    Session::forget('cart.' . $index);;
+    return  redirect()->route('cart');
   }
 
   public function increaseAmount($index)

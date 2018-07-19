@@ -49,12 +49,12 @@ Route::post('/cart/add', [
 Route::get('/cart', [
     'uses' => 'CartController@getItems',
     // 'middleware' => 'auth'
-]);
+])->name('cart');
 
-Route::get('/cart/remove/{index}', [
+Route::post('/cart/remove/{index}', [
     'uses' => 'CartController@removeItem',
     // 'middleware' => 'auth'
-]);
+])->name('cart-remove-item');
 
 Route::get('/cart/increase/{index}', [
     'uses' => 'CartController@increaseAmount',

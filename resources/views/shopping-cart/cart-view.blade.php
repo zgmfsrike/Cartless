@@ -22,18 +22,22 @@
           </thead>
           <tbody>
             <!-- foreach ($list_product as $list) -->
-            @foreach ($cart as $product)
+            @foreach ($cart as $i=>$product)
               <tr>
+                <td>{{$product->product_image}}</td>
                 <td>{{$product->product_name}}</td>
-                {{-- <td>{{$product[$i]['id']}}</td> --}}
                 <td>
                   <a href="#"><span uk-icon="icon: plus-circle"></span></a>
-                  <input type="number" style="width: 35px;">
+                  <input type="number" style="width: 35px;" value="{{$product->amount}}">
                   <a href="#"><span uk-icon="icon: minus-circle"></span></a>
                 </td>
-                <td>PRICE</td>
+                <td>{{$product->product_price}}฿</td>
                 <td>
-                  <button class="uk-button uk-button-danger">Remove</button>
+                  <form action="{{route('cart-remove-item',['index'=>$i])}}" method="POST">
+                    @csrf
+                    <button type="submit" class="uk-button uk-button-danger">Remove</button>
+                  </form>
+
                 </td>
               </tr>
 
