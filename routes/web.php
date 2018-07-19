@@ -56,6 +56,9 @@ Route::post('/cart/remove/{index}', [
     // 'middleware' => 'auth'
 ])->name('cart-remove-item');
 
+Route::post('/cart/remove', [
+])->name('cart-remove-item-default');
+
 Route::any('/cart/increase/{index}', [
     'uses' => 'CartController@increaseAmount',
     // 'middleware' => 'auth'

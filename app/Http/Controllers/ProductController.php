@@ -10,7 +10,7 @@ class ProductController extends Controller
   //get list product for staff
   public function getListProductStaff()
   {
-    $list_product = Product::paginate(5);
+    $list_product = Product::paginate(25);
     return view('product.product-list-staff',['list_product'=>$list_product]);
 
   }

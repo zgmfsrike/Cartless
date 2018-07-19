@@ -6,7 +6,7 @@
 
     <div class="uk-card uk-card-default uk-card-body">
       <div class="uk-card-title uk-width-1-1">
-        {{ __('Product List') }}
+        <h2 class="uk-heading-line uk-text-center"><span>{{ __('Product List') }}</span></h2>
       </div>
 
       <div class="uk-card-body">
@@ -24,8 +24,8 @@
               </div>
             </div>
             <div class="uk-card-body uk-text-left">
-              <h3 class="uk-text-break">{{$list->product_name}}</h3>
-              <h4 class="uk-text-danger">Price: {{$list->product_price}} ฿</h4>
+              <p class="uk-text-break uk-text-lead">{{$list->product_name}}</p>
+              <p class="uk-text-danger">Price: {{$list->product_price}} ฿</p>
               <p class="uk-text-muted uk-text-truncate">{{$list->product_description}}</p>
               <p class="uk-flex uk-flex-right uk-text-primary">{{__('Click for more details')}}</p>
             </div>
@@ -36,6 +36,5 @@
       {{ $list_product->links() }}
     </div>
   </div>
-
 </div>
 @endsection

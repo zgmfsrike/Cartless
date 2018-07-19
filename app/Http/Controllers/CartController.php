@@ -25,6 +25,7 @@ class CartController extends Controller
     // $cart = Session::get('cart.0');
     // return $cart[0]['id'];
     $cart=[];
+    $total_price = 0;
 
     if(session()->has('cart')){
       $session_cart = Session::get('cart');
@@ -33,10 +34,11 @@ class CartController extends Controller
         $cart[$index] = Product::find($id);
         $cart[$index]['amount'] = $session_cart[$index]['amount'];
         $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
+        $total_price += $cart[$index]['product_price'];
       }
     }
     // return Session::get('cart');
-    return view('shopping-cart.cart-view',['cart'=>$cart]);
+    return view('shopping-cart.cart-view',['cart'=>$cart, 'total_price'=>$total_price]);
 
   }
 
