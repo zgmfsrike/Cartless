@@ -26,14 +26,14 @@
               </div>
 
               <div class="uk-margin">
-                <form method="POST" action="{{ route('login') }}" class="uk-form-horizontal uk-margin-large">
-
+                <form method="POST" action="{{ route('add-to-cart') }}" class="uk-form-horizontal uk-margin-large">
+                  @csrf
                   <input type="text" name="product_id" placeholder="display: none" value="{{$product->product_id}}">
 
                   <label class="uk-form-label" for="form-horizontal-text">{{ __('Amount') }}</label>
                   <div class="uk-form-controls">
                     <div class="uk-width-2-3@s">
-                      <input id="price" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}"   name="amount" placeholder="Amount of items" required>
+                      <input id="amount" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}"   name="amount" placeholder="Amount of items" required>
                     </div>
                     @if ($errors->has('amount'))
                       <span class="invalid-feedback" role="alert">

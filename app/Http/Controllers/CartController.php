@@ -8,15 +8,18 @@ use Session;
 class CartController extends Controller
 {
   //
-  public function addItems($product_id, $amount)
+  public function addItems(Request $request)
   {
+    $product_id = $request->product_id;
+    $amount = $request->amount;
+
     Session::push('cart', [
       [
         "id"=>$product_id,
         "amount"=>$amount
       ]
     ]);
-    return "Add cart success";
+    return  "Add cart success";
   }
 
   public function getItems()

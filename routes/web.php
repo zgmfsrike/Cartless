@@ -41,10 +41,10 @@ Route::get('/shopping-cart', function () {
     return view('shopping-cart.cart');
 });
 
-Route::get('/cart/add/{product_id}/{amount}', [
+Route::post('/cart/add', [
     'uses' => 'CartController@addItems',
     // 'middleware' => 'auth'
-]);
+])->name('add-to-cart');
 
 Route::get('/cart/view', [
     'uses' => 'CartController@getItems',
