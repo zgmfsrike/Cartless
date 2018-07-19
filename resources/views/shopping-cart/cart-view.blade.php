@@ -22,29 +22,33 @@
           </thead>
           <tbody>
             <!-- foreach ($list_product as $list) -->
-            <tr>
-              <td>TEST</td>
-              <td>TEST</td>
-              <td>
-                <a href="#"><span uk-icon="icon: plus-circle"></span></a>
-                <input type="number" style="width: 35px;">
-                <a href="#"><span uk-icon="icon: minus-circle"></span></a>
-              </td>
-              <td>PRICE</td>
-              <td>
-                <button class="uk-button uk-button-danger">Remove</button>
-              </td>
-            </tr>
+            @foreach ($cart as $product)
+              <tr>
+                <td>{{$product->product_name}}</td>
+                {{-- <td>{{$product[$i]['id']}}</td> --}}
+                <td>
+                  <a href="#"><span uk-icon="icon: plus-circle"></span></a>
+                  <input type="number" style="width: 35px;">
+                  <a href="#"><span uk-icon="icon: minus-circle"></span></a>
+                </td>
+                <td>PRICE</td>
+                <td>
+                  <button class="uk-button uk-button-danger">Remove</button>
+                </td>
+              </tr>
+
+            @endforeach
+
 
             <!-- endforeach -->
-            <tr>
+            {{-- <tr>
               <td></td>
               <td></td>
               <td>Total price</td>
               <td>NET PRICE</td>
               <td>
               </td>
-            </tr>
+            </tr> --}}
 
           </tbody>
         </table>

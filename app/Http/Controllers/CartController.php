@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-
+use App\Product;
 class CartController extends Controller
 {
   //
@@ -26,8 +26,14 @@ class CartController extends Controller
   {
     // $cart = Session::get('cart.0');
     // return $cart[0]['id'];
-    Session::get('cart');
-    return view('shopping-cart.cart-view');
+    $cart=[];
+    $session_cart = Session::get('cart');
+    foreach ($session_cart as $index => $value) {
+        $id =$session_cart[$index][0]['id'];
+        $cart[$index] = Product::find($id);
+        $cart[$index]['amount'] = $session_cart[$index][0]['amount'];
+    }
+    return view('shopping-cart.cart-view',['cart'=>$cart]);
   }
 
   public function removeItem($index)

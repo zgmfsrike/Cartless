@@ -29,13 +29,13 @@ Route::delete('product/product-delete/{id}','ProductController@postDeleteProduct
 
 Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
 
-Route::get('/product-add', function () {
-    return view('product.product-add');
-});
-
-Route::get('/product-details', function () {
-    return view('product.product-details');
-});
+// Route::get('/product-add', function () {
+//     return view('product.product-add');
+// });
+//
+// Route::get('/product-details', function () {
+//     return view('product.product-details');
+// });
 
 Route::get('/shopping-cart', function () {
     return view('shopping-cart.cart');
