@@ -23,19 +23,29 @@
           <tbody>
             <!-- foreach ($list_product as $list) -->
             @foreach ($cart as $product)
-              <tr>
-                <td>{{$product->product_name}}</td>
-                {{-- <td>{{$product[$i]['id']}}</td> --}}
-                <td>
-                  <a href="#"><span uk-icon="icon: plus-circle"></span></a>
-                  <input type="number" style="width: 35px;">
-                  <a href="#"><span uk-icon="icon: minus-circle"></span></a>
-                </td>
-                <td>PRICE</td>
-                <td>
-                  <button class="uk-button uk-button-danger">Remove</button>
-                </td>
-              </tr>
+            <tr>
+              <td>{{$product->product_name}}</td>
+              {{-- <td>{{$product[$i]['id']}}</td> --}}
+              <td>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                  <button class="uk-button uk-button-link">
+                    <span uk-icon="icon: plus-circle"></span>
+                  </button>
+                </form>
+                <input type="number" style="width: 35px;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                  <button class="uk-button uk-button-link">
+                    <span uk-icon="icon: minus-circle"></span>
+                  </button>
+                </form>
+              </td>
+              <td>PRICE</td>
+              <td>
+                <button class="uk-button uk-button-danger">Remove</button>
+              </td>
+            </tr>
 
             @endforeach
 
