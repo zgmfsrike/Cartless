@@ -27,64 +27,6 @@
             </div>
           @endforeach
 
-          {{-- <div>
-            <div class="uk-card uk-card-default uk-card-hover">
-              <div class="uk-card-media-top">
-                <img src="../docs/images/light.jpg" alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Product name</h3>
-                <p>Price : 300000 $</p>
-                <p>product description product description product description product description
-                  product description product description  product description
-                  product description product description product description product description
-                </p>
-              </div>
-            </div>
-          </div> --}}
-          {{-- <div>
-            <div class="uk-card uk-card-default uk-card-hover">
-              <div class="uk-card-media-top">
-                <img src="../docs/images/light.jpg" alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Product name</h3>
-                <p>product description product description product description product description
-                  product description product description  product description
-                  product description product description product description product description
-                </p>
-              </div>
-            </div>
-          </div> --}}
-          {{-- <div>
-            <div class="uk-card uk-card-default uk-card-hover">
-              <div class="uk-card-media-top">
-                <img src="../docs/images/light.jpg" alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Product name</h3>
-                <p>product description product description product description product description
-                  product description product description  product description
-                  product description product description product description product description
-                </p>
-              </div>
-            </div>
-          </div> --}}
-          {{-- <div>
-            <div class="uk-card uk-card-default uk-card-hover">
-              <div class="uk-card-media-top">
-                <img src="../docs/images/light.jpg" alt="">
-              </div>
-              <div class="uk-card-body">
-                <h3 class="uk-card-title">Product name</h3>
-                <p>product description product description product description product description
-                  product description product description  product description
-                  product description product description product description product description
-                </p>
-              </div>
-            </div>
-          </div> --}}
-
         </div>
       </div>
 

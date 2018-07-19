@@ -15,7 +15,7 @@ class CheckStaff
      */
     public function handle($request, Closure $next)
     {
-      if(Auth::user()->is_staff == 1){
+      if(Auth::user() && Auth::user()->is_staff == 1){
           return $next($request);
       }
         return redirect()->route('home');

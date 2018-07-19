@@ -6,6 +6,11 @@
     <div class="col-md-8">
       <div class="uk-card uk-card-default uk-card-body">
         <div class="uk-card-title">{{ __('Login') }}</div>
+        @if(session('login_fail'))
+            <div class="uk-alert-danger uk-text-center" uk-alert>
+              {{session('login_fail')}}
+            </div>
+          @endif
 
         <div class="uk-card-body">
           <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}" class="uk-form-horizontal uk-margin-large">
