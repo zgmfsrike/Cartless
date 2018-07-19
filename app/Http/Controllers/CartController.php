@@ -26,7 +26,8 @@ class CartController extends Controller
   {
     // $cart = Session::get('cart.0');
     // return $cart[0]['id'];
-    return Session::get('cart');
+    Session::get('cart');
+    return view('shopping-cart.cart-view');
   }
 
   public function removeItem($index)
