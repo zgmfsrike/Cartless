@@ -32,12 +32,10 @@
           </div>
         </a>
         @endforeach
-
       </div>
+      {{ $list_product->links() }}
     </div>
-
   </div>
 
-</div>
 </div>
 @endsection
