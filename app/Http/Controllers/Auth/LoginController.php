@@ -63,6 +63,7 @@ class LoginController extends Controller
   {
     Auth::logout();
     $request->session()->invalidate();
+    Session::forget('cart');
     return redirect()->route('login');
 
   }

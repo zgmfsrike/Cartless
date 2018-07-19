@@ -27,13 +27,17 @@ class CartController extends Controller
     // $cart = Session::get('cart.0');
     // return $cart[0]['id'];
     $cart=[];
-    $session_cart = Session::get('cart');
-    foreach ($session_cart as $index => $value) {
-      $id =$session_cart[$index][0]['id'];
-      $cart[$index] = Product::find($id);
-      $cart[$index]['amount'] = $session_cart[$index][0]['amount'];
-      $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
+
+    if(session()->has('cart')){
+      $session_cart = Session::get('cart');
+      foreach ($session_cart as $index => $value) {
+        $id =$session_cart[$index][0]['id'];
+        $cart[$index] = Product::find($id);
+        $cart[$index]['amount'] = $session_cart[$index][0]['amount'];
+        $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
+      }
     }
+    return Session::get('cart');
     return view('shopping-cart.cart-view',['cart'=>$cart]);
 
   }
@@ -47,10 +51,16 @@ class CartController extends Controller
     return  redirect()->route('cart');
   }
 
+
+
+
+
+
   public function increaseAmount($index)
   {
-    $cart = session(['cart.'.$index.'.amount' => (Session::get('cart.'.$index.'.amount') + 1)]);
+    session(['cart.'.$index.'.amount' => (Session::get('cart.'.$index.'.amount') + 1)]);
     return Session::get('cart');
+    return  redirect()->route('cart');
   }
 
   public function decreaseAmount($index)
@@ -61,7 +71,7 @@ class CartController extends Controller
     {
       session(['cart.'.$index.'.amount' => (Session::get('cart.'.$index.'.amount') - 1)]);
     }
+    return  redirect()->route('cart');
 
-    return Session::get('cart');
   }
 }

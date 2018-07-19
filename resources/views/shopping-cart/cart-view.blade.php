@@ -29,16 +29,16 @@
 
               <td>
                 <a onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
+                document.getElementById('increase-form-{{$i}}').submit();">
                 <span uk-icon="icon: plus-circle"></span></a>
                 <input type="text" style="width: 35px;" value="{{$product->amount}}" disabled>
                 <a onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();">
+                document.getElementById('decrease-form-{{$i}}').submit();">
                 <span uk-icon="icon: minus-circle"></span></a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                <form id="increase-form-{{$i}}" action="{{ route('cart-increase-item',['index'=>$i]) }}" method="POST">
                   @csrf
                 </form>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                <form id="decrease-form-{{$i}}" action="{{ route('cart-decrease-item',['index'=>$i]) }}" method="POST">
                   @csrf
                 </form>
               </td>
