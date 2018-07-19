@@ -46,7 +46,7 @@ Route::get('/cart/add/{product_id}/{amount}', [
     // 'middleware' => 'auth'
 ]);
 
-Route::get('/cart/view', [
+Route::get('/cart', [
     'uses' => 'CartController@getItems',
     // 'middleware' => 'auth'
 ]);
