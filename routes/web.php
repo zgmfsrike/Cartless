@@ -28,6 +28,7 @@ Route::post('product/product-update/{id}','ProductController@postUpdateProduct')
 Route::delete('product/product-delete/{id}','ProductController@postDeleteProduct')->name('product-delete')->middleware('check_staff');
 
 Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
+
 Route::get('/product-add', function () {
     return view('product.product-add');
 });
@@ -39,3 +40,28 @@ Route::get('/product-details', function () {
 Route::get('/shopping-cart', function () {
     return view('shopping-cart.cart');
 });
+
+Route::get('/cart/add/{product_id}/{amount}', [
+    'uses' => 'CartController@addItems',
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/cart/view', [
+    'uses' => 'CartController@getItems',
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/cart/remove/{index}', [
+    'uses' => 'CartController@removeItem',
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/cart/increase/{index}', [
+    'uses' => 'CartController@increaseAmount',
+    // 'middleware' => 'auth'
+]);
+
+Route::get('/cart/decrease/{index}', [
+    'uses' => 'CartController@decreaseAmount',
+    // 'middleware' => 'auth'
+]);

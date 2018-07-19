@@ -1,6 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<script type='text/javascript'>
+function preview_image(event)
+{
+  var reader = new FileReader();
+  reader.onload = function()
+  {
+    var output = document.getElementById('output_image');
+    output.src = reader.result;
+  }
+  reader.readAsDataURL(event.target.files[0]);
+}
+</script>
+
 <div class="uk-section">
   <div class="uk-container">
 
@@ -62,8 +75,7 @@
               <div class="uk-form-controls">
                 <div class="uk-width-2-3@s">
                   <div uk-form-custom>
-                    <input class="uk-input uk-form-width-medium" type="text" placeholder="Image" value="" disabled>
-                    <input type="file" name="product_image" accept="image/*">
+                    <input type="file" name="product_image" accept="image/*" onchange="preview_image(event)">
                     <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
                   </div>
                 </div>
@@ -72,6 +84,9 @@
                   <strong>{{ $errors->first('image') }}</strong>
                 </span>
                 @endif
+                <div class="uk-margin">
+                  <img id="output_image"/>
+                </div>
               </div>
             </div>
 
@@ -84,4 +99,6 @@
       </div>
     </div>
   </div>
+
+
   @endsection
