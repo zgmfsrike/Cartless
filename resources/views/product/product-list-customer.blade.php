@@ -29,9 +29,11 @@
 
           </div>
         </div>
+          {{ $list_product->links() }}
 
       </div>
 
     </div>
   </div>
+
 @endsection
