@@ -57,7 +57,7 @@ class ProductController extends Controller
       $file = $request->file('product_image');
       $extension = $request->file('product_image')->extension();
       $path = 'image/product';
-      $image_name = $request->product_name."_".$time.$extension;
+      $image_name = $request->product_name."_".$time.".".$extension;
       $file->move($path,$image_name);
       $product->product_image = $image_name;
     }
@@ -88,7 +88,7 @@ class ProductController extends Controller
       $file = $request->file('product_image');
       $extension = $request->file('product_image')->extension();
       $path = 'image/product';
-      $image_name = $request->product_name."_".$time.$extension;
+      $image_name = $request->product_name."_".$time.".".$extension;
       $file->move($path,$image_name);
       $product->product_image = $image_name;
 

@@ -13,7 +13,7 @@ class StaffSeeder extends Seeder
   {
     DB::table('users')->insert([
       'email'=>'staff@gmail.com',
-      'password'=>Hash::make('7744536'),
+      'password'=>Hash::make('123456'),
       'firstname'=>'staff',
       'lastname'=>'staff',
       'is_staff'=>1,

@@ -51,7 +51,7 @@ class LoginController extends Controller
       return redirect()->route('product-list-customer');
     }else{
       // return redirect()->back()->withInput($request->only('username','remember'))->with('login_fail','Username or Password is invalid');
-      return redirect()->back()->withInput($request->only('username','remember'));
+      return redirect()->back()->withInput($request->only('email','remember'))->with('login_fail','Username or Password is invalid');
     }
 
 
