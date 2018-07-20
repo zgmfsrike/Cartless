@@ -30,9 +30,9 @@ Route::post('product/product-delete','ProductController@postDeleteProduct')->nam
 
 Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
 
-// Route::get('/product-add', function () {
-//     return view('product.product-add');
-// });
+Route::get('/product-add', function () {
+    return view('product.product-add');
+});
 //
 // Route::get('/product-details', function () {
 //     return view('product.product-details');

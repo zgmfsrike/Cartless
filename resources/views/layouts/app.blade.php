@@ -71,7 +71,9 @@
             <li class="uk-active"><a href="/login">{{ __('Login') }}</a></li>
             <li class="uk-active"><a href="/register">{{ __('Register') }}</a></li>
             @else
+            @if(Auth::user() && Auth::user()->is_staff == 0)
             <li class="uk-active"><a href="/cart"><span uk-icon="icon: cart"></span> Shopping cart</a></li>
+            @endif
             <li class="uk-active"><a onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
               {{ __('Logout') }}</a></li>
