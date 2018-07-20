@@ -46,40 +46,42 @@
 <body class="background-gray">
   <div id="app">
     <div class="" style="margin-bottom: -30px; z-index: 980;" uk-sticky="top: 100; animation: uk-animation-slide-top; bottom: #sticky-on-scroll-up">
-    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
-      <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-          <li class="uk-active"><a href="{{route('home')}}">{{ __('CARTless') }}</a></li>
-          @if(Auth::user() && Auth::user()->is_staff == 1)
-          <li class="uk-active"><a href="{{route('product-list-staff')}}">Product List</a></li>
-          @else
-          <li class="uk-active"><a href="{{route('product-list-customer')}}">Product List</a></li>
-          @endif
-        </ul>
-      </div>
-
-      <div class="uk-navbar-center">
-        <img src="/image/logo/logo.png" alt="" class="logo-image uk-border-circle">
-        <div uk-dropdown><h3 class="uk-text-danger">บ๊อบบี้แนะนำ</h3></div>
-      </div>
-
-      <div class="uk-navbar-right">
-        <ul class="uk-navbar-nav">
-          @guest
-          <li class="uk-active"><a href="/login">{{ __('Login') }}</a></li>
-          <li class="uk-active"><a href="/register">{{ __('Register') }}</a></li>
-          @else
-          <li class="uk-active"><a href="/cart"><span uk-icon="icon: cart"></span> Shopping cart</a></li>
-          <li class="uk-active"><a onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}</a></li>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-              @csrf
-            </form>
-            @endguest
+      <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+        <div class="uk-navbar-left">
+          <ul class="uk-navbar-nav">
+            <li class="uk-active"><a href="{{route('home')}}" class="uk-text-bold">{{ __('CART') }}<sub>{{ __('less') }}</sub></a></li>
+            @if(Auth::user() && Auth::user()->is_staff == 1)
+            <li class="uk-active"><a href="{{route('product-list-staff')}}">Product List</a></li>
+            @else
+            <li class="uk-active"><a href="{{route('product-list-customer')}}">Product List</a></li>
+            @endif
           </ul>
         </div>
-      </nav>
+
+        <div class="uk-navbar-center">
+          <a href="{{route('home')}}">
+            <img src="/image/logo/logo.png" alt="" class="logo-image uk-border-circle">
+            <div uk-dropdown><h3 class="uk-text-danger">บ๊อบบี้แนะนำ</h3></div>
+          </a>
+        </div>
+
+        <div class="uk-navbar-right">
+          <ul class="uk-navbar-nav">
+            @guest
+            <li class="uk-active"><a href="/login">{{ __('Login') }}</a></li>
+            <li class="uk-active"><a href="/register">{{ __('Register') }}</a></li>
+            @else
+            <li class="uk-active"><a href="/cart"><span uk-icon="icon: cart"></span> Shopping cart</a></li>
+            <li class="uk-active"><a onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              {{ __('Logout') }}</a></li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+              </form>
+              @endguest
+            </ul>
+          </div>
+        </nav>
       </div>
 
       <main class="uk-container">

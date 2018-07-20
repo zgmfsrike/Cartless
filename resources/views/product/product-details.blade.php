@@ -23,14 +23,14 @@
         </div>
 
         <div class="uk-margin">
-          <h3>Price: {{$product->product_price }} ฿</h3>
+          <h3 class="uk-text-danger">Price: {{$product->product_price }} ฿</h3>
           {{-- {{$product->productDiscount->product_discount }} --}}
         </div>
 
         <div class="uk-margin">
-          <h3>
+          <h4 class="uk-text-muted">
           {{$product->product_description }}
-          </h3>
+        </h4>
         </div>
 
         @if(Auth::user() && Auth::user()->is_staff == 0)

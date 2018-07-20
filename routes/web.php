@@ -25,7 +25,8 @@ Route::post('product-add-staff','ProductController@postStoreProduct')->name('pro
 Route::get('product-list-customer','ProductController@getListProductCustomer')->name('product-list-customer');
 Route::get('product/product-edit/{id}','ProductController@getEditProduct')->name('product-edit')->middleware('check_staff');
 Route::post('product/product-update/{id}','ProductController@postUpdateProduct')->name('product-update')->middleware('check_staff');
-Route::delete('product/product-delete/{id}','ProductController@postDeleteProduct')->name('product-delete')->middleware('check_staff');
+Route::post('product/product-delete/{id}','ProductController@postDeleteProduct')->name('product-delete')->middleware('check_staff');
+Route::post('product/product-delete','ProductController@postDeleteProduct')->name('product-delete-default')->middleware('check_staff');
 
 Route::get('product/product-details/{id}','ProductController@getProductDetail')->name('product-detail');
 
