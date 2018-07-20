@@ -4,6 +4,19 @@
 <div class="uk-section">
   <div class="uk-container">
     <div class="uk-card uk-card-default uk-card-body">
+
+      <div class="uk-width-1-1">
+        <div class="uk-alert-primary" uk-alert>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+      </div>
+
+      <div class="uk-width-1-1">
+        <div class="uk-alert-danger" uk-alert>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+      </div>
+
       <div class="uk-card-title uk-width-1-1">
         <h2 class="uk-heading-line uk-text-center"><span>{{ __('Summary') }}</span></h2>
       </div>
@@ -64,7 +77,7 @@
             </div>
 
             <div class="uk-margin">
-              <button type="submit" class="uk-button uk-button-primary uk-width-1-1">Next >></button>
+              <button type="submit" class="uk-button uk-button-default uk-width-1-1">Next >></button>
             </div>
 
             <!-- After has session discount -->
@@ -104,7 +117,7 @@
             </div>
 
             <div class="uk-margin">
-              <button type="submit" class="uk-button uk-button-primary uk-width-1-1">Puechase</button>
+              <button type="submit" class="uk-button uk-button-default uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
             </div>
 
           </div>

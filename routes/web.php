@@ -78,3 +78,11 @@ Route::get('/cart/clear', function () {
 Route::get('/order/checkout', function () {
   return view('order.order-checkout');
 });
+
+Route::get('/order', function () {
+  return view('order.order-details');
+});
+
+Route::get('/orders', function () {
+  return view('order.order-list');
+});

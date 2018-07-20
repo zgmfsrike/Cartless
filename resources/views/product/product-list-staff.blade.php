@@ -58,8 +58,6 @@ function delete_product(id){
               </td>
             </tr>
             @endforeach
-
-
           </tbody>
         </table>
 
