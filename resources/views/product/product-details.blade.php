@@ -29,8 +29,8 @@
 
         <div class="uk-margin">
           <h4 class="uk-text-muted">
-          {{$product->product_description }}
-        </h4>
+            {{$product->product_description }}
+          </h4>
         </div>
 
         @if(Auth::user() && Auth::user()->is_staff == 0)
@@ -46,7 +46,7 @@
               <div class="uk-width-4-5@m">
                 <div class="uk-width-1-1@m uk-child-width-1-3@m" uk-grid>
                   <div class="uk-width-2-3@m">
-                      <input id="amount" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}"   name="amount" placeholder="Amount of items" required>
+                    <input id="amount" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}"   name="amount" placeholder="Amount of items" required>
                   </div>
                   <div class="uk-width-1-3@m">
                     <button type="submit" class="uk-button uk-button-danger uk-width-1-1">
@@ -65,7 +65,30 @@
             </div>
           </form>
         </div>
+        @else
+        <hr class="uk-divider-icon">
+
+        <div class="uk-margin">
+
+        </div>
         @endif
+        <p>click the stars</p>
+        <div class="cont">
+          <div class="stars">
+            <form action="">
+              <input class="star star-5" id="star-5-2" type="radio" name="star"/>
+              <label class="star star-5" for="star-5-2"></label>
+              <input class="star star-4" id="star-4-2" type="radio" name="star"/>
+              <label class="star star-4" for="star-4-2"></label>
+              <input class="star star-3" id="star-3-2" type="radio" name="star"/>
+              <label class="star star-3" for="star-3-2"></label>
+              <input class="star star-2" id="star-2-2" type="radio" name="star"/>
+              <label class="star star-2" for="star-2-2"></label>
+              <input class="star star-1" id="star-1-2" type="radio" name="star"/>
+              <label class="star star-1" for="star-1-2"></label>
+            </form>
+          </div>
+        </div>
 
       </div>
 

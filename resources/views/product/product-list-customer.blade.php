@@ -24,10 +24,12 @@
               </div>
             </div>
             <div class="uk-card-body uk-text-left">
-              <p class="uk-text-break uk-text-lead">{{$list->product_name}}</p>
-              <p class="uk-text-danger">Price: {{$list->product_price}} ฿</p>
-              <p class="uk-text-muted uk-text-truncate">{{$list->product_description}}</p>
-              <p class="uk-flex uk-flex-right uk-text-primary">{{__('Click for more details')}}</p>
+              <h4>
+                <p class="uk-text-break uk-text-lead">{{$list->product_name}}</p>
+                <p class="uk-text-danger">Price: {{$list->product_price}} ฿</p>
+                <p class="uk-text-muted uk-text-truncate">{{$list->product_description}}</p>
+                <p class="uk-flex uk-flex-right uk-text-primary">{{__('Click for more details')}}</p>
+              </h4>
             </div>
           </div>
         </a>
