@@ -74,3 +74,7 @@ Route::get('/cart/clear', function () {
   Session::forget('cart');
   return  redirect()->route('cart');
 });
+
+Route::get('/order/checkout', function () {
+  return view('order.order-checkout');
+});

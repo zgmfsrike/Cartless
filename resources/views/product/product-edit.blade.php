@@ -48,9 +48,7 @@ function preview_image(event)
             <div class="uk-form-controls">
               <div class="uk-width-2-3@s">
                 <textarea id="description" class="uk-textarea {{ $errors->has('description') ? ' uk-form-danger' : '' }}"
-                  rows="5" placeholder="Description" name="description" required>
-                  {{$product->product_description}}
-                </textarea>
+                  rows="5" placeholder="Description" name="description" required>{{$product->product_description}}</textarea>
               </div>
               @if ($errors->has('description'))
               <span class="invalid-feedback" role="alert">
