@@ -111,11 +111,11 @@
             <textarea class="uk-width-1-1" name="name" rows="8"></textarea>
 
             <div class="uk-margin">
-              <label class="uk-form-label" for="form-horizontal-text">{{ __('Rate this product') }}</label>
+              <p>Rate this product</p>
               <div class="uk-form-controls">
                 <div class="uk-inline uk-width-2-3@s">
                   <div class="stars">
-                    <input class="star star-5" id="star-5-2" type="radio" name="star"/>
+                    <input class="star star-5" id="star-5-2" type="radio" name="star" checked/>
                     <label class="star star-5" for="star-5-2"></label>
                     <input class="star star-4" id="star-4-2" type="radio" name="star"/>
                     <label class="star star-4" for="star-4-2"></label>
