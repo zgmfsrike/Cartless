@@ -80,6 +80,7 @@ Route::get('/cart/clear', function () {
 // })->name('checkout');
 Route::get('/order/checkout','PaymentController@getCheckoutSummary')->name('checkout');
 Route::get('/next-process','PaymentController@nextProcess')->name('next-process');
+Route::post('/review/{product_id}','ReviewController@postAddReview')->name('review');
 
 
 

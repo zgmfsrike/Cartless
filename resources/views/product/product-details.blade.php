@@ -73,57 +73,48 @@
         @endif
 
 
-
         <hr class="uk-divider-icon">
         <h3 class="uk-heading-bullet">Review</h3>
         <p class="uk-text-muted">Overall Rating: <span class="uk-text-danger uk-text-bold">4.3</span></p>
         <div class="review">
-          <article class="uk-comment uk-comment-primary">
-            <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
-              <div class="uk-width-expand">
-                <h4 class="uk-comment-title uk-margin-remove uk-heading-bullet">Author</h4>
-              </div>
-            </header>
-            <div class="uk-comment-body">
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-          </article>
-          <hr>
-          <article class="uk-comment uk-comment-primary">
-            <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
-              <div class="uk-width-expand">
-                <h4 class="uk-comment-title uk-margin-remove uk-heading-bullet">Author</h4>
-              </div>
-            </header>
-            <div class="uk-comment-body">
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-            </div>
-          </article>
-          <hr>
+          @foreach ($product->review as $review)
 
+            <article class="uk-comment uk-comment-primary">
+              <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+                <div class="uk-width-expand">
+                  <h4 class="uk-comment-title uk-margin-remove uk-heading-bullet">User ID : {{$review->user_id}}</h4>
+                </div>
+              </header>
+              <div class="uk-comment-body">
+                <p>  {{$review->review_context}}</p>
+              </div>
+            </article>
+            <hr>
+          @endforeach
         </div>
 
 
         <div class="uk-section uk-section-muted uk-padding">
-          <form action="">
+          <form action="{{route('review',['product_id'=>$product_id])}}" method="POST">
+            @csrf
             <h3 class="uk-heading-bullet">Write your review</h3>
 
-            <textarea class="uk-width-1-1" name="name" rows="8"></textarea>
+            <textarea class="uk-width-1-1" name="review_context" rows="8" required></textarea>
 
             <div class="uk-margin">
               <p>Rate this product</p>
               <div class="uk-form-controls">
                 <div class="uk-inline uk-width-2-3@s">
                   <div class="stars">
-                    <input class="star star-5" id="star-5-2" type="radio" name="star" checked/>
+                    <input class="star star-5" id="star-5-2" type="radio" value=5 name="rating" checked/>
                     <label class="star star-5" for="star-5-2"></label>
-                    <input class="star star-4" id="star-4-2" type="radio" name="star"/>
+                    <input class="star star-4" id="star-4-2" type="radio" value=4 name="rating"/>
                     <label class="star star-4" for="star-4-2"></label>
-                    <input class="star star-3" id="star-3-2" type="radio" name="star"/>
+                    <input class="star star-3" id="star-3-2" type="radio" value=3 name="rating"/>
                     <label class="star star-3" for="star-3-2"></label>
-                    <input class="star star-2" id="star-2-2" type="radio" name="star"/>
+                    <input class="star star-2" id="star-2-2" type="radio" value=2 name="rating"/>
                     <label class="star star-2" for="star-2-2"></label>
-                    <input class="star star-1" id="star-1-2" type="radio" name="star"/>
+                    <input class="star star-1" id="star-1-2" type="radio" value=1 name="rating"/>
                     <label class="star star-1" for="star-1-2"></label>
                   </div>
                 </div>

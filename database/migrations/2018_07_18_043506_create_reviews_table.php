@@ -18,6 +18,7 @@ class CreateReviewsTable extends Migration
             $table->integer('product_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('review_context',500);
+            $table->integer('rating');
         });
     }
 

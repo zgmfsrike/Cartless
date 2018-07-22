@@ -25,8 +25,8 @@ class ProductController extends Controller
 
   public function getProductDetail($id)
   {
-    $product = Product::with(['productDiscount'])->where('product_id',$id)->get();
-    return view('product.product-details',['product'=>$product]);
+    $product = Product::with(['productDiscount','review'])->where('product_id',$id)->get();
+    return view('product.product-details',['product'=>$product,'product_id'=>$id]);
   }
 
   //get edit product page
