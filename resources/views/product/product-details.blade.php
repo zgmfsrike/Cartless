@@ -46,7 +46,7 @@
               <div class="uk-width-4-5@m">
                 <div class="uk-width-1-1@m uk-child-width-1-3@m" uk-grid>
                   <div class="uk-width-2-3@m">
-                    <input id="amount" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}"   name="amount" placeholder="Amount of items" required>
+                    <input id="amount" type="number" class="uk-input {{ $errors->has('amount') ? ' uk-form-danger' : '' }}" name="amount" placeholder="Amount of items" min="0" required>
                   </div>
                   <div class="uk-width-1-3@m">
                     <button type="submit" class="uk-button uk-button-danger uk-width-1-1">
