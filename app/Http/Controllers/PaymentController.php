@@ -22,7 +22,14 @@ class PaymentController extends Controller
         }
       }
 
+
       return view('order.order-checkout',['cart'=>$cart,'total_price'=>$total_price]);
 
+    }
+
+    public function nextProcess()
+    {
+      Session::push('next-process','next');
+      return redirect()->back();
     }
 }
