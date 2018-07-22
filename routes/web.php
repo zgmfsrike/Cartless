@@ -77,7 +77,7 @@ Route::get('/cart/clear', function () {
 
 Route::get('/order/checkout', function () {
   return view('order.order-checkout');
-});
+})->name('checkout');
 
 Route::get('/order', function () {
   return view('order.order-details');

@@ -88,6 +88,8 @@ function remove_item(index){
           </tbody>
         </table>
 
+        <button class="uk-button uk-button-danger"><a href="{{ route('checkout') }}">Checkout</a></button>
+
       </div>
     </div>
   </div>

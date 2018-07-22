@@ -3,7 +3,7 @@
 @section('content')
 <div class="uk-section">
   <div class="uk-container">
-    <div class="uk-card uk-card-default uk-card-body">
+    <div class="uk-card uk-card-default uk-card-body uk-padding">
 
       <div class="uk-width-1-1">
         <div class="uk-alert-primary" uk-alert>
@@ -18,13 +18,13 @@
       </div>
 
       <div class="uk-card-title uk-width-1-1">
-        <h2 class="uk-heading-line uk-text-center"><span>{{ __('Summary') }}</span></h2>
+        <h2 class="uk-heading-line uk-text-center"><span>{{ __('Checkout Summary') }}</span></h2>
       </div>
 
       <div class="uk-overflow-auto uk-width-1-1">
         <div class="uk-child-width-1-2@s" uk-grid>
           <div class="uk-width-1-2@s">
-            <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-margin-top">
               <table class="uk-table uk-table-small uk-table-divider">
                 <thead>
                   <tr class="">
@@ -42,7 +42,7 @@
                 </tbody>
               </table>
             </div>
-            <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-margin-top">
               <div class="uk-grid-match uk-child-width-1-1@m" uk-grid>
                 <div>
                   <div class="uk-text-danger">Total price: {$total_price}} ฿</div>
@@ -54,7 +54,7 @@
           <div class="uk-width-1-2@s">
 
             <!-- Coupon discount -->
-            <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-top">
               <form class="" action="index.html" method="post">
                 <div class="uk-margin">
                   <label class="uk-form-label" for="form-horizontal-text">{{ __('Coupon code') }}</label>
@@ -76,12 +76,12 @@
               </form>
             </div>
 
-            <div class="uk-margin">
-              <button type="submit" class="uk-button uk-button-default uk-width-1-1">Next >></button>
+            <div class="uk-margin uk-margin-right">
+              <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Next >></button>
             </div>
 
             <!-- After has session discount -->
-            <div class="uk-card uk-card-default uk-card-body">
+            <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-top">
               <form class="" action="index.html" method="post">
                 <div class="uk-margin">
                   <label class="uk-form-label" for="form-horizontal-text">{{ __('Address') }}</label>
@@ -110,14 +110,14 @@
                     @endif
                   </div>
                 </div>
-                <div class="uk-margin">
+                <!-- <div class="uk-margin">
                   <button type="submit" class="uk-button uk-button-primary">Submit</button>
-                </div>
+                </div> -->
               </form>
             </div>
 
-            <div class="uk-margin">
-              <button type="submit" class="uk-button uk-button-default uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
+            <div class="uk-margin uk-margin-right">
+              <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
             </div>
 
           </div>

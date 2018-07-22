@@ -23,6 +23,10 @@
     background-color: #F0F0F0;
   }
 
+  .content-text{
+    font-size: 20px;
+  }
+
   .uk-navbar-container:not(.uk-navbar-transparent){
     background-color: #BBBBBBDD;
     max-height: 80px;
@@ -66,13 +70,15 @@
   }
 
   input.star-5:checked ~ label.star:before {
-    color: #FE7;
-    text-shadow: 0 0 20px #952;
+    color: #FD4;
+    text-shadow: 0 0 10px #222;
   }
 
   input.star-1:checked ~ label.star:before { color: #F62; }
 
   label.star:hover { transform: rotate(-15deg) scale(1.3); }
+
+  label.star-no-hover:hover { transform: rotate(-0deg) scale(1); }
 
   label.star:before {
     content: '\f006';
