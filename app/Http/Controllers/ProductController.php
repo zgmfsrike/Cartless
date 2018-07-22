@@ -48,16 +48,19 @@ class ProductController extends Controller
       'product_image'=>'image|nullable',
     ]);
     $time = time();
+    $random_string = str_random(6);
 
     $product = new Product;
     $product->product_name =$request->product_name;
     $product->product_price =$request->price;
     $product->product_description =$request->description;
     if($request->hasFile('product_image')){
+
+
       $file = $request->file('product_image');
       $extension = $request->file('product_image')->extension();
       $path = 'image/product';
-      $image_name = $request->product_name."_".$time.".".$extension;
+      $image_name = $random_string."_".$time.".".$extension;
       $file->move($path,$image_name);
       $product->product_image = $image_name;
     }
@@ -73,6 +76,7 @@ class ProductController extends Controller
   public function postUpdateProduct(Request $request ,$id)
   {
     $time = time();
+    $random_string = str_random(6);
 
     $this->validate($request,  [
       'product_name'=>'string|min:4|max:30|required',
@@ -88,7 +92,7 @@ class ProductController extends Controller
       $file = $request->file('product_image');
       $extension = $request->file('product_image')->extension();
       $path = 'image/product';
-      $image_name = $request->product_name."_".$time.".".$extension;
+      $image_name = $random_string."_".$time.".".$extension;
       $file->move($path,$image_name);
       $product->product_image = $image_name;
 
