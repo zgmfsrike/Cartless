@@ -39,13 +39,26 @@
                     <td>{$product->amount}}</td>
                   </tr>
                   <!-- endforeach -->
+                  <tr>
+                    <td>{$product->product_name}}</td>
+                    <td>{$product->amount}}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
             <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-margin-top">
               <div class="uk-grid-match uk-child-width-1-1@m" uk-grid>
-                <div>
-                  <div class="uk-text-danger">Total price: {$total_price}} ฿</div>
+                <div class="uk-grid-small" uk-grid>
+                  <div class="uk-width-expand" uk-leader="fill: .">Total price:</div>
+                  <div class="uk-width-auto">{$total_price}} ฿</div>
+                </div>
+                <div class="uk-grid-small uk-text-danger" uk-grid>
+                  <div class="uk-width-expand" uk-leader="fill: .">Discount:</div>
+                  <div class="uk-width-auto">- {$total_price}} ฿</div>
+                </div>
+                <div class="uk-grid-small uk-text-primary" uk-grid>
+                  <div class="uk-width-expand" uk-leader="fill: .">Net price:</div>
+                  <div class="uk-width-auto">{$total_price}} ฿</div>
                 </div>
               </div>
             </div>
@@ -111,20 +124,20 @@
                   </div>
                 </div>
                 <!-- <div class="uk-margin">
-                  <button type="submit" class="uk-button uk-button-primary">Submit</button>
-                </div> -->
-              </form>
-            </div>
-
-            <div class="uk-margin uk-margin-right">
-              <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
-            </div>
-
+                <button type="submit" class="uk-button uk-button-primary">Submit</button>
+              </div> -->
+            </form>
           </div>
+
+          <div class="uk-margin uk-margin-right">
+            <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 @endsection
