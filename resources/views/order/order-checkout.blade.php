@@ -56,15 +56,20 @@
                       <div class="uk-width-expand" uk-leader="fill: .">Discount:</div>
                       <div class="uk-width-auto">-   {{ session('coupon.0.coupon_discount') }} ฿</div>
                     </div>
+                    @php
+                      $net_price = $total_price-session('coupon.0.coupon_discount');
+                    @endphp
 
                     <div class="uk-grid-small uk-text-primary" uk-grid>
                       <div class="uk-width-expand" uk-leader="fill: .">Net price:</div>
-                      <div class="uk-width-auto">{{$total_price-session('coupon.0.coupon_discount')}} ฿</div>
+                      <div class="uk-width-auto">{{$net_price}} ฿</div>
                     </div>
+                    <input type="text" name="net_price" placeholder="display: none" value="{{$net_price}}" style="display: none" >
                   @else
                     <div class="uk-grid-small uk-text-primary" uk-grid>
                       <div class="uk-width-expand" uk-leader="fill: .">Net price:</div>
                       <div class="uk-width-auto">{{$total_price}} ฿</div>
+                      <input type="text" name="net_price" placeholder="display: none" value="{{$total_price}}" style="display: none" >
                     </div>
                   @endif
 
