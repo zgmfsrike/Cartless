@@ -39,6 +39,7 @@ class PaymentController extends Controller
         }
       }
 
+
       return view('order.order-checkout',['cart'=>$cart,'total_price'=>$total_price]);
 
     }
@@ -176,5 +177,9 @@ class PaymentController extends Controller
         \Session::put('error', 'Payment failed');
         return Redirect::to('/');
 
+    public function nextProcess()
+    {
+      Session::push('next-process','next');
+      return redirect()->back();
     }
 }

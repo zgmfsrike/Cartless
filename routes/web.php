@@ -79,6 +79,7 @@ Route::get('/cart/clear', function () {
 //   return view('order.order-checkout');
 // })->name('checkout');
 Route::get('/order/checkout','PaymentController@getCheckoutSummary')->name('checkout');
+Route::get('/next-process','PaymentController@nextProcess')->name('next-process');
 
 
 
@@ -91,3 +92,4 @@ Route::get('/order/checkout','PaymentController@getCheckoutSummary')->name('chec
 
 Route::get('/order','OrderController@getOrderDetail')->name('order-detail');
 Route::get('/orders','OrderController@getListOrder')->name('order-list');
+Route::post('/validate-coupon','CouponController@validateCoupon')->name('validate-coupon');
