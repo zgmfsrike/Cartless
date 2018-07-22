@@ -34,23 +34,22 @@
                 </thead>
                 <tbody>
                   <!-- foreach ($list_product as $list) -->
-                  <tr>
-                    <td>{$product->product_name}}</td>
-                    <td>{$product->amount}}</td>
-                  </tr>
-                  <!-- endforeach -->
-                  <tr>
-                    <td>{$product->product_name}}</td>
-                    <td>{$product->amount}}</td>
-                  </tr>
+                  @foreach ($cart as $product)
+                    <tr>
+                      <td>{{$product->product_name}}</td>
+                      <td>{{$product->amount}}</td>
+                    </tr>
+
+                  @endforeach
                 </tbody>
               </table>
             </div>
             <div class="uk-card uk-card-default uk-card-body uk-margin-left uk-margin-top">
               <div class="uk-grid-match uk-child-width-1-1@m" uk-grid>
                 <div class="uk-grid-small" uk-grid>
+
                   <div class="uk-width-expand" uk-leader="fill: .">Total price:</div>
-                  <div class="uk-width-auto">{$total_price}} ฿</div>
+                  <div class="uk-width-auto">{{$total_price}} ฿</div>
                 </div>
                 <div class="uk-grid-small uk-text-danger" uk-grid>
                   <div class="uk-width-expand" uk-leader="fill: .">Discount:</div>

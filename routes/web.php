@@ -75,14 +75,19 @@ Route::get('/cart/clear', function () {
   return  redirect()->route('cart');
 });
 
-Route::get('/order/checkout', function () {
-  return view('order.order-checkout');
-})->name('checkout');
+// Route::get('/order/checkout', function () {
+//   return view('order.order-checkout');
+// })->name('checkout');
+Route::get('/order/checkout','PaymentController@getCheckoutSummary')->name('checkout');
 
-Route::get('/order', function () {
-  return view('order.order-details');
-});
 
-Route::get('/orders', function () {
-  return view('order.order-list');
-});
+
+// Route::get('/order', function () {
+//   return view('order.order-details');
+// });
+// Route::get('/orders', function () {
+//   return view('order.order-list');
+// });
+
+Route::get('/order','OrderController@getOrderDetail')->name('order-detail');
+Route::get('/orders','OrderController@getListOrder')->name('order-list');
