@@ -23,9 +23,15 @@ class Product extends Model
 
   public function orderProduct()
   {
-    return $this->hasMany('App\OrderProduct');
+    return $this->hasMany('App\OrderProduct','product_id','product_id');
 
   }
+  // public function order()
+  // {
+  //   // code...
+  //   return  $this->belongsToMany('App\Order','order_products','order_id','product_id');
+  // }
+
 
   public function productDiscount()
   {

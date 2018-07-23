@@ -20,6 +20,12 @@ class Order extends Model
     // code...
     return  $this->hasMany('App\OrderProduct','order_id','order_id');
   }
+  // public function product()
+  // {
+  //   // code...
+  //   return  $this->belongsToMany('App\Product','order_products','order_id','product_id');
+  // }
+
 
   public function coupon()
   {

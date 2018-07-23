@@ -19,8 +19,9 @@ class OrderController extends Controller
   //get order detail
   public function getOrderDetail($order_id)
   {
-    $order = Order::with(['orderProduct'])->find($order_id);
-    return view('order.order-details',['order'=>$order]);
+    $order = Order::find($order_id);
+    $product = Order::find($order_id)->orderProduct()->get();
+    return view('order.order-details',['order'=>$order,'product'=>$product]);
   }
 
   //update order status

@@ -12,12 +12,12 @@ class OrderProduct extends Model
   public function product()
   {
     // code...
-    return  $this->belongsTo('App\Product');
+    return  $this->belongsToMany('App\Product','product_id','product_id');
 
   }
   public function order()
   {
     // code.
-    return  $this->belongsTo('App\Order','order_id','order_id');
+    return  $this->belongsToMany('App\Order','order_id','order_id');
   }
 }
