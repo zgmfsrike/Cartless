@@ -34,12 +34,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- foreach ($list_product as $list) -->
+                  @foreach ($product as $list)
                   <tr>
-                    <td>{$product->product_name}}</td>
-                    <td>{$product->amount}}</td>
+                    <td>{{$list->product_name}}</td>
+                    <td>{{$list->amount}}</td>
                   </tr>
-                  <!-- endforeach -->
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -56,11 +56,16 @@
 
             <!-- Coupon discount -->
             <div class="uk-card uk-card-default uk-card-body">
-              address: asdfasdfasdfasdfasdfasdfasdfdsafdsfdsafsdfasdfa <br>
-              tel-number: fdsfadsadfasdfsafdsafdsfasdfasdfasfasfda<br>
-              Status:<br>
+              <div class="uk-text-bold">address:</div> asdfasdfasdfasdfasdfasdfasdfdsafdsfdsafsdfasdfa
+              <div class="uk-text-bold">tel-number:</div> fdsfadsadfasdfsafdsafdsfasdfasdfasfasfda
+              <div class="uk-text-bold">Status:</div>
               <!-- Staff can change status -->
-              dropdown
+              <div class="uk-margin">
+                <select class="uk-select">
+                  <option>Payment Success</option>
+                  <option>Delivered</option>
+                </select>
+              </div>
             </div>
 
           </div>

@@ -75,21 +75,21 @@
 
         <hr class="uk-divider-icon">
         <h3 class="uk-heading-bullet">Review</h3>
-        <p class="uk-text-muted">Overall Rating: <span class="uk-text-danger uk-text-bold">4.3</span></p>
+        <p class="uk-text-muted">Overall Rating: <span class="uk-text-danger uk-text-bold">{{$rating}}</span></p>
         <div class="review">
-          @foreach ($product->review as $review)
+          @foreach ($reviews as $review)
 
-            <article class="uk-comment uk-comment-primary">
-              <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
-                <div class="uk-width-expand">
-                  <h4 class="uk-comment-title uk-margin-remove uk-heading-bullet">User ID : {{$review->user_id}}</h4>
-                </div>
-              </header>
-              <div class="uk-comment-body">
-                <p>  {{$review->review_context}}</p>
+          <article class="uk-comment uk-comment-primary">
+            <header class="uk-comment-header uk-grid-medium uk-flex-middle" uk-grid>
+              <div class="uk-width-expand">
+                <h4 class="uk-comment-title uk-margin-remove uk-heading-bullet">{{$review->user->firstname}}</h4>
               </div>
-            </article>
-            <hr>
+            </header>
+            <div class="uk-comment-body">
+              <p>{{$review->review_context}}</p>
+            </div>
+          </article>
+          <hr>
           @endforeach
         </div>
 
@@ -98,9 +98,7 @@
           <form action="{{route('review',['product_id'=>$product_id])}}" method="POST">
             @csrf
             <h3 class="uk-heading-bullet">Write your review</h3>
-
-            <textarea class="uk-width-1-1" name="review_context" rows="8" required></textarea>
-
+            <textarea class="uk-width-1-1 uk-textarea" name="review_context" rows="4" required></textarea>
             <div class="uk-margin">
               <p>Rate this product</p>
               <div class="uk-form-controls">

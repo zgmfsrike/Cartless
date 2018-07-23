@@ -122,10 +122,10 @@
               @csrf
               <div class="uk-card uk-card-default uk-card-body uk-margin-right uk-margin-top">
                 <div class="uk-margin">
-                  <label class="uk-form-label" for="form-horizontal-text">{{ __('Address') }}</label>
+                  <label class="uk-form-label" for="form-horizontal-text" >{{ __('Address') }}</label>
                   <div class="uk-form-controls">
                     <div class="uk-width-1-1@s">
-                      <textarea id="address" type="text" class="uk-input {{ $errors->has('address') ? ' uk-form-danger' : '' }}"   name="address" required></textarea>
+                      <textarea id="address" type="text" class="uk-textarea {{ $errors->has('address') ? ' uk-form-danger' : '' }}" rows="3" name="address" required></textarea>
                     </div>
                     @if ($errors->has('address'))
                     <span class="invalid-feedback" role="alert">

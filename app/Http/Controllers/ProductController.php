@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Review;
+
 class ProductController extends Controller
 {
 
@@ -25,8 +27,12 @@ class ProductController extends Controller
 
   public function getProductDetail($id)
   {
-    $product = Product::with(['productDiscount','review'])->where('product_id',$id)->get();
-    return view('product.product-details',['product'=>$product,'product_id'=>$id]);
+    // $product = Product::with(['productDiscount','review'])->where('product_id',$id)->get();
+    $product = Product::with(['productDiscount'])->where('product_id',$id)->get();
+    $reviews = Review::with(['user'])->where('product_id',$id)->get();
+    $rating = Review::where('product_id',$id)->avg('rating');
+    $rating = round($rating, 1, PHP_ROUND_HALF_UP);
+    return view('product.product-details',['product'=>$product,'product_id'=>$id,'reviews'=>$reviews,'rating'=>$rating]);
   }
 
   //get edit product page
