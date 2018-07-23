@@ -21,6 +21,9 @@ use Redirect;
 use Session;
 use URL;
 use App\Product;
+use App\Order;
+use Auth;
+use App\OrderProduct;
 
 class PaymentController extends Controller
 {
@@ -69,6 +72,27 @@ class PaymentController extends Controller
 
   public function payWithpaypal(Request $request)
   {
+    $order_id = str_random(3) . time();
+
+    $order = new Order();
+    $order->order_id = $order_id;
+    $order->user_id = Auth::user()->user_id;
+    $order->net_price = $request->get('net_price');
+    $order->order_status = 1;
+    $order->order_date = date('d-m-y');
+    $order->address = $request->get('address');
+    $order->tel_number = $request->get('tel_number');
+    $order->save();
+
+    $session_cart = Session::get('cart');
+    foreach ($session_cart as $index => $value) {
+      $order_product = new OrderProduct();
+      $order_product->order_id = $order_id;
+      $order_product->product_id = $session_cart[$index]['id'];
+      $order_product->amount = $session_cart[$index]['amount'];
+      $order_product->save();
+    }
+    // return $order;
 
     $payer = new Payer();
     $payer->setPaymentMethod('paypal');
@@ -78,14 +102,14 @@ class PaymentController extends Controller
     $item_1->setName('Item 1') /** item name **/
     ->setCurrency('THB')
     ->setQuantity(1)
-    ->setPrice($request->get('amount')); /** unit price **/
+    ->setPrice($request->get('net_price')); /** unit price **/
 
     $item_list = new ItemList();
     $item_list->setItems(array($item_1));
 
     $amount = new Amount();
     $amount->setCurrency('THB')
-    ->setTotal($request->get('amount'));
+    ->setTotal($request->get('net_price'));
 
     $transaction = new Transaction();
     $transaction->setAmount($amount)
@@ -119,6 +143,8 @@ class PaymentController extends Controller
 
       }
 
+    }catch(\PayPal\Exception\PayPalConnectionException $e){
+      return $e->getData();
     }
 
     foreach ($payment->getLinks() as $link) {
@@ -134,6 +160,7 @@ class PaymentController extends Controller
 
     /** add payment ID to session **/
     Session::put('paypal_payment_id', $payment->getId());
+    Session::put('order_id', $order_id);
 
     if (isset($redirect_url)) {
 
@@ -151,13 +178,13 @@ class PaymentController extends Controller
   {
     /** Get the payment ID before session clear **/
     $payment_id = Session::get('paypal_payment_id');
+    $order_id = Session::get('order_id');
 
     /** clear the session payment ID **/
     Session::forget('paypal_payment_id');
     if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
 
-      \Session::put('error', 'Payment failed');
-      return Redirect::to('/');
+      return redirect()->route('checkout')->with('error','Payment failed.');
 
     }
 
@@ -169,13 +196,12 @@ class PaymentController extends Controller
     $result = $payment->execute($execution, $this->_api_context);
 
     if ($result->getState() == 'approved') {
-
-      \Session::put('success', 'Payment success');
-      return Redirect::to('/');
-
+      $order = Order::find($order_id);
+      $order->order_status = 2;
+      $order->save();
+      return redirect()->route('order-details',$order_id)->with('success','Payment Success.');
     }
 
-    \Session::put('error', 'Payment failed');
-    return Redirect::to('/');
+    return redirect()->route('checkout')->with('error','Payment failed');
   }
 }

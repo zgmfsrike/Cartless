@@ -80,7 +80,12 @@ Route::get('/cart/clear', function () {
 // })->name('checkout');
 Route::get('/order/checkout','PaymentController@getCheckoutSummary')->name('checkout');
 Route::get('/next-process','PaymentController@nextProcess')->name('next-process');
+Route::post('/payment','PaymentController@payWithpaypal')->name('paypal');
+Route::get('status', 'PaymentController@getPaymentStatus');
+
 Route::post('/review/{product_id}','ReviewController@postAddReview')->name('review');
+
+Route::get('/order/{order_id}','OrderController@getOrderDetail')->name('order-details');
 
 
 
@@ -91,6 +96,6 @@ Route::post('/review/{product_id}','ReviewController@postAddReview')->name('revi
 //   return view('order.order-list');
 // });
 
-Route::get('/order','OrderController@getOrderDetail')->name('order-detail');
+// Route::get('/order','OrderController@getOrderDetail')->name('order-detail');
 Route::get('/orders','OrderController@getListOrder')->name('order-list');
 Route::post('/validate-coupon','CouponController@validateCoupon')->name('validate-coupon');

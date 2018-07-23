@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->double('net_price');
             $table->integer('order_status');
-            $table->string('coupon_code',20);
+            // $table->string('coupon_code',20);
             $table->date('order_date');
             $table->string('address',300);
             $table->string('tel_number',20);

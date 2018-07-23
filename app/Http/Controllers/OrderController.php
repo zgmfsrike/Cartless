@@ -19,7 +19,7 @@ class OrderController extends Controller
   //get order detail
   public function getOrderDetail($order_id)
   {
-    $order = Order::with(['orderProduct'])->where('order_id',$order_id)->get();
+    $order = Order::with(['orderProduct'])->find($order_id);
     return view('order.order-details',['order'=>$order]);
   }
 

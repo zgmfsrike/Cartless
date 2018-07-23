@@ -18,7 +18,7 @@ class Order extends Model
   public function orderProduct()
   {
     // code...
-    return  $this->hasMany('App\OrderProduct');
+    return  $this->hasMany('App\OrderProduct','order_id','order_id');
   }
 
   public function coupon()
