@@ -3,7 +3,7 @@
 @section('content')
 
 @php
-if($total_price <= 1000){
+if($total_price <= 100){
   Session::forget('coupon');
 }
 @endphp
@@ -163,7 +163,7 @@ if($total_price <= 1000){
               </div>
               <div class="uk-margin uk-margin-right">
                 <input type="text" name="net_price" placeholder="display: none" value="{{$net_price}}" style="display: none" >
-                <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Puechase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
+                <button type="submit" class="uk-button uk-button-danger uk-width-1-1">Purchase with <img class="uk-width-small" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2000px-PayPal.svg.png"></button>
               </div>
             </form>
             <?php Session::forget('next-process');?>

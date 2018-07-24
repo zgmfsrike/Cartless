@@ -43,9 +43,9 @@ function delete_product(id){
           <tbody>
             @foreach ($list_product as $list)
             <tr>
-              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_id}}</td>
+              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';" class="uk-table-shrink">{{$list->product_id}}</td>
               <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_name}}</td>
-              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_description}}</td>
+              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';" class="uk-text-truncate">{{$list->product_description}}</td>
               <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">
                 @if(isset($list->productDiscount->product_discount))
                 <s>{{$list->product_price}} ฿</s>
