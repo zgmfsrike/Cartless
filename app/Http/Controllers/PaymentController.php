@@ -37,9 +37,9 @@ class PaymentController extends Controller
       $session_cart = Session::get('cart');
       foreach ($session_cart as $index => $value) {
         $id =$session_cart[$index]['id'];
-        $cart[$index] = Product::find($id);
+        $cart[$index] = Product::with(['productDiscount'])->find($id);
         $cart[$index]['amount'] = $session_cart[$index]['amount'];
-        $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
+        $cart[$index]['product_price'] = $cart[$index]['product_price']*((100-$cart[$index]['productDiscount']['product_discount'])/100)*$cart[$index]['amount'];
         $total_price += $cart[$index]['product_price'];
       }
     }
@@ -79,7 +79,7 @@ class PaymentController extends Controller
     $order->user_id = Auth::user()->user_id;
     $order->net_price = $request->get('net_price');
     $order->order_status = 1;
-    $order->order_date = date('d-m-y');
+    $order->order_date = date('y-m-d');
     $order->address = $request->get('address');
     $order->tel_number = $request->get('tel_number');
     $order->save();
@@ -199,6 +199,8 @@ class PaymentController extends Controller
       $order = Order::find($order_id);
       $order->order_status = 2;
       $order->save();
+      Session::forget('cart');
+      Session::forget('coupon');
       return redirect()->route('order-details',$order_id)->with('success','Payment Success.');
     }
 

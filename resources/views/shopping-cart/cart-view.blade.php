@@ -47,7 +47,6 @@ function remove_item(index){
             <tr>
               <td><img class="uk-preserve-width" src="/image/product/{{$product->product_image}}" width="80" alt="" style="max-height: 100px; max-width: 100px;"></td>
               <td>{{$product->product_name}}</td>
-
               <td>
                 <a onclick="event.preventDefault();
                 document.getElementById('increase-form-{{$i}}').submit();">
@@ -73,7 +72,6 @@ function remove_item(index){
             </tr>
 
             @endforeach
-
 
             <!-- endforeach -->
             <tr class="uk-text-danger">

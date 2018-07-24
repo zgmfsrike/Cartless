@@ -25,7 +25,16 @@
             </div>
             <div class="uk-card-body uk-text-left content-text">
               <p class="uk-text-break uk-text-lead">{{$list->product_name}}</p>
-              <p class="uk-text-danger">Price: {{$list->product_price}} ฿</p>
+              <p class="uk-text-danger">Price:
+                @if(isset($list->productDiscount->product_discount))
+                <s>{{$list->product_price}} ฿</s>
+                <strong>{{$list->product_price * (100 - $list->productDiscount->product_discount) / 100 }} ฿</strong>
+                <br>
+                <span class="uk-text-muted">discount {{$list->productDiscount->product_discount}}% off</span>
+                @else
+                {{$list->product_price}} ฿
+                @endif
+              </p>
               <p class="uk-text-muted uk-text-truncate">{{$list->product_description}}</p>
               <p class="uk-flex uk-flex-right uk-text-primary">{{__('Click for more details')}}</p>
             </div>

@@ -12,7 +12,6 @@ class CouponController extends Controller
     $coupon_code = $request->coupon_code;
     $coupon = Coupon::where('coupon_code',$coupon_code)->first();
 
-
     if($coupon){
       $coupon_discount = $coupon->coupon_discount;
       Session::push('coupon', [

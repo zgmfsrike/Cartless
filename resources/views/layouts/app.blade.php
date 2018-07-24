@@ -24,7 +24,7 @@
   }
 
   .content-text{
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .uk-navbar-container:not(.uk-navbar-transparent){
@@ -98,6 +98,7 @@
             <li class="uk-active"><a href="{{route('home')}}" class="uk-text-bold">{{ __('CART') }}<sub>{{ __('less') }}</sub></a></li>
             @if(Auth::user() && Auth::user()->is_staff == 1)
             <li class="uk-active"><a href="{{route('product-list-staff')}}">Product List</a></li>
+            <li class="uk-active"><a href="{{route('order-list')}}">Order List</a></li>
             @else
             <li class="uk-active"><a href="{{route('product-list-customer')}}">Product List</a></li>
             @endif

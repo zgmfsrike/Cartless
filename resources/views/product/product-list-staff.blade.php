@@ -46,7 +46,14 @@ function delete_product(id){
               <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_id}}</td>
               <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_name}}</td>
               <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_description}}</td>
-              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">{{$list->product_price}}</td>
+              <td onclick="window.location.href = '{{route('product-detail',['id'=>$list->product_id])}}';">
+                @if(isset($list->productDiscount->product_discount))
+                <s>{{$list->product_price}} ฿</s>
+                <strong>{{$list->product_price * (100 - $list->productDiscount->product_discount) / 100 }} ฿</strong>
+                @else
+                {{$list->product_price}} ฿
+                @endif
+              </td>
               <td>
                 <a href="{{route('product-edit',['id'=>$list->product_id])}}"><button class="uk-width-1-1 uk-button uk-button-primary uk-button-small">Edit</button></a>
                 {{-- <a href="{{route('product-delete',['id'=>$list->product_id])}}"></a><button class="uk-button uk-button-link ">Delete</button> --}}

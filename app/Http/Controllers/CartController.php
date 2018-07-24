@@ -31,9 +31,9 @@ class CartController extends Controller
       $session_cart = Session::get('cart');
       foreach ($session_cart as $index => $value) {
         $id =$session_cart[$index]['id'];
-        $cart[$index] = Product::find($id);
+        $cart[$index] = Product::with(['productDiscount'])->find($id);
         $cart[$index]['amount'] = $session_cart[$index]['amount'];
-        $cart[$index]['product_price'] = $cart[$index]['product_price']*$cart[$index]['amount'];
+        $cart[$index]['product_price'] = $cart[$index]['product_price']*((100-$cart[$index]['productDiscount']['product_discount'])/100)*$cart[$index]['amount'];
         $total_price += $cart[$index]['product_price'];
       }
     }
@@ -50,11 +50,6 @@ class CartController extends Controller
     Session::forget('cart.' . $index);
     return  redirect()->route('cart');
   }
-
-
-
-
-
 
   public function increaseAmount($index)
   {

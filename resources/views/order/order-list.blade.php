@@ -9,29 +9,32 @@
         <h2 class="uk-heading-line uk-text-center"><span>{{ __('Order list') }}</span></h2>
       </div>
 
-      <ul class="uk-tab-bottom" uk-tab>
-        <li class="uk-active"><a href="#">Success</a></li>
-        <li><a href="#">Delivered</a></li>
-      </ul>
-
-      <table class="uk-table uk-table-small uk-table-divider">
+      <table class="uk-table uk-table-small uk-table-divider uk-table-hover">
         <thead>
           <tr class="">
             <th class="uk-table-shrink">#</th>
             <th class="uk-table-expand">Order ID</th>
-            <th class="uk-table-expand">Time</th>
-            <th class="uk-width-1-6">------</th>
+            <th class="uk-table-expand">Date</th>
+            <th class="uk-table-expand">Customer Name</th>
+            <th class="uk-table-expand">Net Price</th>
+            <th class="uk-table-expand">Status</th>
           </tr>
         </thead>
         <tbody>
-          <!-- foreach ($list_product as $list) -->
-          <tr>
-            <td>1</td>
-            <td>{$product->product_name}}</td>
-            <td>view details</td>
-            <td>view details</td>
+          @foreach ($list_order as $index=>$order)
+          <tr onclick="window.location.href = '{{route('order-details',['order_id'=>$order->order_id])}}';">
+            <td>{{$index+1}}</td>
+            <td>{{$order->order_id}}</td>
+            <td>{{$order->order_date}}</td>
+            <td>{{$order->firstname}}</td>
+            <td>{{$order->net_price}} ฿</td>
+            @if ( $order->order_status == 2 )
+            <td class="uk-text-danger">{{__('Payment Success')}}</td>
+            @elseif ( $order->order_status == 3 )
+            <td class="uk-text-primary">{{__('Ordered')}}</td>
+            @endif
           </tr>
-          <!-- endforeach -->
+          @endforeach
         </tbody>
       </table>
 

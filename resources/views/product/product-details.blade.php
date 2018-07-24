@@ -23,8 +23,16 @@
         </div>
 
         <div class="uk-margin">
-          <h3 class="uk-text-danger">Price: {{$product->product_price }} ฿</h3>
-          {{-- {{$product->productDiscount->product_discount }} --}}
+          @if(isset($product->productDiscount->product_discount))
+          <h3 class="uk-text-danger">Price:
+            <s>{{$product->product_price}} ฿</s>
+            <strong>{{$product->product_price * (100 - $product->productDiscount->product_discount) / 100 }} ฿</strong>
+            <span class="uk-text-muted">discount {{$product->productDiscount->product_discount}}% off</span>
+          </h3>
+
+          @else
+          <h3 class="uk-text-danger">Price: {{$product->product_price}} ฿</h3>
+          @endif
         </div>
 
         <div class="uk-margin">
@@ -65,13 +73,32 @@
             </div>
           </form>
         </div>
+        @elseif(Auth::user() && Auth::user()->is_staff == 1)
+        <hr class="uk-divider-icon">
+        <form action="{{route('product-set-discount')}}" method="post">
+          @csrf
+          <div class="uk-margin">
+            <label class="uk-form-label" for="form-horizontal-text">{{ __('Set Discount (%)') }}</label>
+            <div class="uk-form-controls">
+              <div class="uk-inline uk-width-2-3@s">
+                <input type="text" name="product_id" placeholder="display: none" value="{{$product->product_id}}" style="display: none" >
+                <input id="discount" type="number" class="uk-input uk-width-1-3 {{ $errors->has('discount') ? ' uk-form-danger' : '' }}"  name="discount" value="{{ old('discount') }}" required>
+              </div>
+            </div>
+            @if ($errors->has('discount'))
+            <span class="invalid-feedback" role="alert">
+              <strong>{{ $errors->first('discount') }}</strong>
+            </span>
+            @endif
+          </div>
+          <button class="uk-button uk-button-primary" type="submit">Save</button>
+        </form>
         @else
         <hr class="uk-divider-icon">
         <div class="uk-margin uk-text-muted uk-flex uk-flex-center">
           <p>Please <a href="{{ route('login') }}"><strong>login</strong></a> to order this product</p>
         </div>
         @endif
-
 
         <hr class="uk-divider-icon">
         <h3 class="uk-heading-bullet">Review</h3>
@@ -93,7 +120,7 @@
           @endforeach
         </div>
 
-
+        @if(Auth::user() && Auth::user()->is_staff == 0)
         <div class="uk-section uk-section-muted uk-padding">
           <form action="{{route('review',['product_id'=>$product_id])}}" method="POST">
             @csrf
@@ -125,15 +152,10 @@
               </button>
             </div>
           </form>
-
         </div>
-
+        @endif
       </div>
-
       @endforeach
-
-
-
     </div>
   </div>
 </div>

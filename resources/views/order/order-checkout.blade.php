@@ -62,7 +62,7 @@
                 </div>
                 @if(Session::has('coupon'))
                 <div class="uk-grid-small uk-text-danger" uk-grid>
-                  <div class="uk-width-expand" uk-leader="fill: .">Discount:</div>
+                  <div class="uk-width-expand" uk-leader="fill: .">Coupon Discount:</div>
                   <div class="uk-width-auto">-   {{ session('coupon.0.coupon_discount') }} ฿</div>
                 </div>
                 @php
