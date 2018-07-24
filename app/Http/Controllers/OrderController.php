@@ -14,7 +14,7 @@ class OrderController extends Controller
   //get list of order
   public function getListOrder()
   {
-    $query = "SELECT orders.order_id, products.product_name, order_products.amount, orders.net_price, orders.address, orders.tel_number, orders.order_date, orders.order_status, users.firstname FROM orders INNER JOIN order_products ON orders.order_id = order_products.order_id INNER JOIN products ON products.product_id = order_products.product_id INNER JOIN users ON users.user_id = orders.user_id WHERE orders.order_status = 2 GROUP BY orders.order_id ORDER BY orders.order_date ASC";
+    $query = "SELECT orders.order_id, products.product_name, order_products.amount, orders.net_price, orders.address, orders.tel_number, orders.order_date, orders.order_status, users.firstname FROM orders INNER JOIN order_products ON orders.order_id = order_products.order_id INNER JOIN products ON products.product_id = order_products.product_id INNER JOIN users ON users.user_id = orders.user_id GROUP BY orders.order_id ORDER BY orders.order_date DESC";
     $list_order = DB::SELECT($query);
     return view('order.order-list',['list_order'=>$list_order]);
   }
@@ -23,7 +23,7 @@ class OrderController extends Controller
   {
     // $order = Order::find($order_id);
     // $product = Order::find($order_id)->orderProduct()->get();
-    $query = "SELECT orders.order_id, products.product_name, order_products.amount, orders.net_price, orders.address, orders.tel_number, orders.order_date, orders.order_status FROM order_products INNER JOIN orders ON orders.order_id = order_products.order_id INNER JOIN products ON products.product_id = order_products.product_id WHERE order_products.order_id = '$order_id'" ;
+    $query = "SELECT orders.order_id, products.product_name, order_products.amount, orders.net_price, orders.address, orders.tel_number, orders.order_date, orders.order_status, users.firstname, users.lastname FROM order_products INNER JOIN orders ON orders.order_id = order_products.order_id INNER JOIN products ON products.product_id = order_products.product_id INNER JOIN users ON users.user_id = orders.user_id WHERE order_products.order_id = '$order_id'" ;
     $order_details = DB::SELECT($query);
     return view('order.order-details',['order_details'=>$order_details]);
   }

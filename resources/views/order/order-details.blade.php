@@ -5,7 +5,7 @@
   <div class="uk-container">
     <div class="uk-card uk-card-default uk-card-body">
 
-      <div class="uk-width-1-1">
+      <!-- <div class="uk-width-1-1">
         <div class="uk-alert-primary" uk-alert>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         </div>
@@ -15,7 +15,7 @@
         <div class="uk-alert-danger" uk-alert>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         </div>
-      </div>
+      </div> -->
 
       <div class="uk-card-title uk-width-1-1">
         <h2 class="uk-heading-line uk-text-center"><span>{{ __('Order Details') }}</span></h2>
@@ -56,23 +56,37 @@
 
             <!-- Coupon discount -->
             <div class="uk-card uk-card-default uk-card-body content-text">
+              <div class="uk-text-bold">Order ID: </div>{{$order_details[0]->order_id}}
+              <div class="uk-text-bold">Order date: </div>{{$order_details[0]->order_date}}
+              <div class="uk-text-bold">Name: </div>{{$order_details[0]->firstname}} {{$order_details[0]->lastname}}
               <div class="uk-text-bold">address: </div>{{$order_details[0]->address}}
               <div class="uk-text-bold">tel-number: </div>{{$order_details[0]->tel_number}}
-              <div class="uk-text-bold">Status:</div>
               <!-- Staff can change status -->
+              @if(Auth::user() && Auth::user()->is_staff == 1 && $order_details[0]->order_status != 1)
+              <div class="uk-text-bold">Status:</div>
               <form action="{{route('change-order-status')}}" method="post">
                 @csrf
                 <div class="uk-margin">
                   <input style="display: none" name="order_id" value="{{$order_details[0]->order_id}}"></input>
                   <select class="uk-select" name="order_status" >
-                    <option value="2" <?php echo ($order_details[0]->order_status === 2) ? "selected" : ""; ?>>Payment Success</option>
-                    <option value="3" <?php echo ($order_details[0]->order_status === 3) ? "selected" : ""; ?>>Delivered</option>
+                    <option value="2" <?php echo ($order_details[0]->order_status == 2) ? "selected" : ""; ?>>Payment Success</option>
+                    <option value="3" <?php echo ($order_details[0]->order_status == 3) ? "selected" : ""; ?>>Delivered</option>
                   </select>
                 </div>
                 <div class="uk-margin">
                   <button class="uk-button uk-button-primary">Save</button>
                 </div>
               </form>
+              @else
+              <div class="uk-text-bold">Status:</div>
+              @if($order_details[0]->order_status == 1)
+              Payment Failed
+              @elseif($order_details[0]->order_status == 2)
+              Payment Success
+              @elseif($order_details[0]->order_status == 3)
+              Delivered
+              @endif
+              @endif
             </div>
 
           </div>

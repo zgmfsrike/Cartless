@@ -28,7 +28,9 @@
             <td>{{$order->order_date}}</td>
             <td>{{$order->firstname}}</td>
             <td>{{$order->net_price}} ฿</td>
-            @if ( $order->order_status == 2 )
+            @if( $order->order_status == 1 )
+            <td class="uk-text-muted">{{__('Payment Fail')}}</td>
+            @elseif ( $order->order_status == 2 )
             <td class="uk-text-danger">{{__('Payment Success')}}</td>
             @elseif ( $order->order_status == 3 )
             <td class="uk-text-primary">{{__('Ordered')}}</td>
