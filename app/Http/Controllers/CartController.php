@@ -37,6 +37,7 @@ class CartController extends Controller
         $total_price += $cart[$index]['product_price'];
       }
     }
+    if($total_price < 0 ) $total_price = 0;
     // return Session::get('cart');
     return view('shopping-cart.cart-view',['cart'=>$cart, 'total_price'=>$total_price]);
 

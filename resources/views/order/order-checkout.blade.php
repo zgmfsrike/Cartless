@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
+@php
+if($total_price <= 1000){
+  Session::forget('coupon');
+}
+@endphp
 <div class="uk-section">
   <div class="uk-container">
     <div class="uk-card uk-card-default uk-card-body uk-padding">
@@ -67,6 +73,9 @@
                 </div>
                 @php
                 $net_price = $total_price-session('coupon.0.coupon_discount');
+                if ( $net_price < 0 ) {
+                  $net_price = 0;
+                }
                 @endphp
                 <div class="uk-grid-small uk-text-primary" uk-grid>
                   <div class="uk-width-expand" uk-leader="fill: .">Net price:</div>
@@ -94,10 +103,13 @@
               <form class="" action="{{route('validate-coupon')}}" method="post">
                 @csrf
                 <div class="uk-margin">
-                  <label class="uk-form-label" for="form-horizontal-text">{{ __('Coupon code') }}</label>
+                  <label class="uk-form-label" for="form-horizontal-text"><h4>{{ __('Coupon code') }}</h4></label>
+                  @if( $total_price <= 100)
+                  <div class="uk-text-danger">Total price must be more than 100 ฿</div>
+                  @endif
                   <div class="uk-form-controls">
                     <div class="uk-width-1-1@s">
-                      <input id="coupon_code" type="text" class="uk-input {{ $errors->has('coupon_code') ? ' uk-form-danger' : '' }}"   name="coupon_code" required></inout>
+                      <input id="coupon_code" type="text" class="uk-input {{ $errors->has('coupon_code') ? ' uk-form-danger' : '' }}"   name="coupon_code" <?php echo ($total_price<=100) ? "disabled" : "required";?>></inout>
                     </div>
                     @if ($errors->has('coupon_code'))
                     <span class="invalid-feedback" role="alert">
@@ -108,7 +120,7 @@
                 </div>
 
                 <div class="uk-margin">
-                  <button type="submit" class="uk-button uk-button-primary">Validate</button>
+                  <button type="submit" class="uk-button uk-button-primary" <?php echo ($total_price<=100) ? "disabled" : "";?>>Validate</button>
                 </div>
               </form>
             </div>
